@@ -1,20 +1,21 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  CoffeeShopAppWithSwiftUI
 //
 //  Created by San Engineer on 29/08/21.
 //
 
+import Foundation
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     var body: some View {
-        TabBarView()
+        Text("This is Home")
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HomeView()
     }
 }
