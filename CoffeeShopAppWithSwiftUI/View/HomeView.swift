@@ -33,6 +33,7 @@ struct HomeView: View {
             }
             .frame(width: UIScreen.screenWidth, height:(UIScreen.screenHeight))
             .background(Color.heroColor)
+            .offset(x: 0, y: -(UIScreen.screenHeight/4))
           
             HStack(alignment:.top){
                 
@@ -43,17 +44,34 @@ struct HomeView: View {
                         .resizable()
                         .scaledToFill()
                 )
-            .offset(x: 0, y: -(UIScreen.screenHeight/4))
+            
             HStack{
                 
             }
             .frame(width: UIScreen.screenWidth, height:(UIScreen.screenHeight))
-            .background(Color.red)
+            .background(Color.heroColor)
             .mask(
                 LinearGradient(gradient: Gradient(colors: [Color.black, Color.black.opacity(0)]), startPoint: .top, endPoint: .bottom)
             )
+            .offset(x: 0, y: 100)
+
+            HStack{
+
+            }
+            .frame(width: UIScreen.screenWidth, height:300)
+            .background(Color.heroColorBackground)
+            .offset(x: 0, y: 350)
+            
             VStack{
-                NavigationBar()
+                VStack(){
+                    NavigationBar()
+                        .offset(x: 0, y:20)
+                }
+                .frame(height:100)
+                .background(Color.heroColor)
+                .padding(.bottom, 0)
+               
+               
                 ScrollView(showsIndicators: false){
                     VStack{
                         // MARK: - First Section
@@ -145,9 +163,10 @@ struct HomeView: View {
                         }
                            
                     }
-                }.padding(.bottom, 100)
+                }
+//                .offset(x: 0, y:40)
+                .padding(.bottom, 50)
             }
-            .offset(x: 0, y:40)
         }
        
                
