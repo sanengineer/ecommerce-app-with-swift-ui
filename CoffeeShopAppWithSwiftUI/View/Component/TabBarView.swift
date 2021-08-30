@@ -16,22 +16,21 @@ struct TabBarView: View {
     var body: some View {
         TabView{
             HomeView()
-                .foregroundColor(.blue)
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
-                }
-            Text("Menu")
+                }.ignoresSafeArea(SafeAreaRegions.all, edges: .top)
+            MenuView()
                 .tabItem {
                     Image(systemName: "book")
                     Text("Menu")
                 }
-            Text("Cart")
+            CartView()
                 .tabItem {
                     Image(systemName: "cart")
                     Text("Cart")
                 }
-            Text("Profile")
+            ProfileView()
                 .tabItem {
                     Image(systemName: "person.circle")
                     Text("Profile")
