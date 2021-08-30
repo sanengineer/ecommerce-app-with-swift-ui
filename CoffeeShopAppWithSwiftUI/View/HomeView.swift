@@ -28,10 +28,30 @@ struct HomeView: View {
         ]
         
         ZStack{
-            HStack(alignment:.top){}
-                .frame(width: UIScreen.screenWidth, height:(UIScreen.screenHeight))
-                .background(Color.heroColor)
-                .offset(x: 0, y: -(UIScreen.screenHeight/4))
+            
+            HStack{
+            }
+            .frame(width: UIScreen.screenWidth, height:(UIScreen.screenHeight))
+            .background(Color.heroColor)
+          
+            HStack(alignment:.top){
+                
+            }
+            .frame(width: UIScreen.screenWidth, height:(UIScreen.screenHeight))
+            .background(
+                    Image("HeroHomeBackgroundImage")
+                        .resizable()
+                        .scaledToFill()
+                )
+            .offset(x: 0, y: -(UIScreen.screenHeight/4))
+            HStack{
+                
+            }
+            .frame(width: UIScreen.screenWidth, height:(UIScreen.screenHeight))
+            .background(Color.red)
+            .mask(
+                LinearGradient(gradient: Gradient(colors: [Color.black, Color.black.opacity(0)]), startPoint: .top, endPoint: .bottom)
+            )
             VStack{
                 NavigationBar()
                 ScrollView(showsIndicators: false){
@@ -79,7 +99,6 @@ struct HomeView: View {
                             VStack{}
                                 .frame(minWidth: 0, idealWidth: UIScreen.screenWidth, maxWidth: .infinity, minHeight: 0, idealHeight: UIScreen.screenHeight, maxHeight: .infinity, alignment: .center)
                                 .background(Color.heroColorBackground)
-                                .colorScheme(ColorScheme.dark)
                                 .offset(x: 0, y: 100)
                             VStack(spacing:32){
                                
@@ -121,8 +140,6 @@ struct HomeView: View {
                                         CardRoundedImageTextView()
                                     }
                                 }.offset(x: 0, y: -10)
-                                
-                                
                             }
                             .padding()
                         }

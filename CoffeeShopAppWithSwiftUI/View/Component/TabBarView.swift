@@ -9,9 +9,12 @@ import Foundation
 import SwiftUI
 
 struct TabBarView: View {
+ 
     init() {
         UITabBar.appearance().barTintColor = .systemBackground
     }
+    
+    @StateObject var state = State()
     
     var body: some View {
         TabView{
@@ -30,14 +33,16 @@ struct TabBarView: View {
                     Image(systemName: "cart")
                     Text("Cart")
                 }
-            ProfileView()
+            ProfileView(state: State())
                 .tabItem {
                     Image(systemName: "person.circle")
                     Text("Profile")
                 }
         }
-        .colorScheme(ColorScheme.dark)
+       
     }
+    
+  
     
 }
 

@@ -22,6 +22,7 @@ struct ImageSlideView: View {
                 }
             }.tabViewStyle(PageTabViewStyle())
             .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
+            .background(Color.heroColorBackground)
         }
     }
 }
