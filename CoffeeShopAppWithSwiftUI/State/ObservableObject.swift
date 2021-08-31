@@ -11,6 +11,7 @@ import SwiftUI
 class State: ObservableObject {
     @Published var iconName: String = "moon"
     @Published var labelThemeColor: String = "Dark"
-    @Published var colorScheme = ColorScheme.dark
-    @Published var bool: Bool = false
+    @Published var colorScheme: ColorScheme? = nil
+    @Published var bool = false
+    @Published var nextView: Bool = true
 }

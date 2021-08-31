@@ -62,14 +62,20 @@ struct HomeView: View {
             .background(Color.heroColorBackground)
             .offset(x: 0, y: 350)
             
-            VStack{
-                VStack(){
-                    NavigationBar()
-                        .offset(x: 0, y:20)
+            VStack(spacing:0){
+                VStack(alignment: .center,spacing:0){
+                    NavigationBar(navTitle:"Coffee Shop", backgroundColor: Color.heroColor, divideNumber: 7.8)
+
                 }
-                .frame(height:100)
-                .background(Color.heroColor)
-                .padding(.bottom, 0)
+                
+
+//                .padding(.horizontal, 20)
+//                .padding(.top, UIScreen.screenHeight/20)
+//                .padding(.bottom, 10)
+//                .background(Color.red)
+//                .offset(x: 0, y:(UIScreen.screenHeight/18))
+            
+
                
                
                 ScrollView(showsIndicators: false){

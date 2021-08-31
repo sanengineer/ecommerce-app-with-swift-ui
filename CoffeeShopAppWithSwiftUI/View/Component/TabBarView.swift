@@ -14,31 +14,55 @@ struct TabBarView: View {
         UITabBar.appearance().barTintColor = .systemBackground
     }
     
-    @StateObject var state = State()
+    var state = State()
+    @SwiftUI.State private var selection = 0
+    
+    var handler: Binding<Int> { Binding(
+    
+        get: {self.selection},
+        set: {
+            if $0 == self.selection {
+                print("Reset")
+            }
+            
+            self.selection = $0
+        }
+    
+    )}
     
     var body: some View {
-        TabView{
+        TabView(selection: handler){
             HomeView()
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
-                }.ignoresSafeArea(SafeAreaRegions.all, edges: .top)
+                }
+                .tag(0)
+                .ignoresSafeArea(SafeAreaRegions.all, edges: .top)
+                
             MenuView()
                 .tabItem {
                     Image(systemName: "book")
                     Text("Menu")
                 }
+                .tag(1)
+                .ignoresSafeArea(SafeAreaRegions.all, edges: .top)
             CartView()
                 .tabItem {
                     Image(systemName: "cart")
                     Text("Cart")
                 }
-            ProfileView(state: State())
+                .tag(2)
+                .ignoresSafeArea(SafeAreaRegions.all, edges: .top)
+            ProfileView(state: state)
                 .tabItem {
                     Image(systemName: "person.circle")
                     Text("Profile")
                 }
+                .tag(3)
+                .ignoresSafeArea(SafeAreaRegions.all, edges: .top)
         }
+        
        
     }
     

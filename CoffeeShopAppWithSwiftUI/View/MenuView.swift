@@ -10,6 +10,23 @@ import SwiftUI
 
 struct MenuView: View {
     var body: some View {
-        Text("Menu")
+        VStack(spacing: 0){
+           
+            NavigationBar(navTitle:"Menu", backgroundColor: Color.heroColor)
+                 
+          
+            VStack{
+                ScrollView(showsIndicators: false){
+                    VStack{
+                    
+                       
+                    }
+                   
+                }
+                
+                .background(Color.red)
+            }
+           
+        }
     }
 }
