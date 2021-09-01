@@ -9,10 +9,6 @@ import Foundation
 import SwiftUI
 
 struct TabBarView: View {
- 
-//    init() {
-//        UITabBar.appearance().barTintColor = .systemBackground
-//    }
     
     @StateObject var state : State
 
@@ -42,10 +38,13 @@ struct TabBarView: View {
                     }
                 }
             }
+           
             .padding(.horizontal, 30)
             .padding(.top, 12)
             .padding(.bottom, (self.state.ratio) == (self.state.aspectScreen) ? 6 : 30 )
-            .background(Color.green)
+            .background(Color.white)
+            .border(width: 1, edges:[.top], color: Color.darkLightColor, opacity: 1.0)
+            
        
     }
 }

@@ -28,4 +28,17 @@ extension View {
             
         }
     }
+    
+    func border(width: CGFloat, edges: [Edge], color: Color, opacity: Double ) -> some View {
+        overlay(EdgeBorder(width: width, edges: edges).foregroundColor(color).opacity(opacity))
+    }
+    
+    @ViewBuilder func `if`<Content: View>(_ condition: @autoclosure () -> Bool, transform: (Self) -> Content) -> some View {
+        if condition() {
+            transform(self)
+        } else {
+            self
+        }
+    }
 }
+

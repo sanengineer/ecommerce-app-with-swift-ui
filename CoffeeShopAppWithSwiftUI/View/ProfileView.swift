@@ -56,7 +56,13 @@ struct ProfileView: View {
                             }
                             
                             VStack(){
-                                Text("Logout")
+                                Button(action: {
+                                    print("Button Logout")
+                                }, label: {
+                                    Text("Logout")
+                                        .font(Font.system(size: 16, weight: .bold, design: .default))
+                                        .foregroundColor(.red)
+                                })
                             }
                         }
                         .padding(.bottom, 100)
@@ -64,12 +70,6 @@ struct ProfileView: View {
                 }
 
             }
-           
-         
-//                .preferredColorScheme(state.colorScheme)
-//            .offset(x: 0, y: -(UIScreen.screenHeight/33))
-//
-//
         
        
     }
@@ -79,3 +79,8 @@ struct ProfileView: View {
     }
 }
 
+struct ProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView(state: State())
+    }
+}
