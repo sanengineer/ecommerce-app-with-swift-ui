@@ -12,104 +12,56 @@ import SwiftUI
 struct ProfileView: View {
     
     @StateObject var state: State
+  
    
     
     var body: some View {
+        
+        
+        
             VStack(spacing: 0){
                 NavigationBar(navTitle:"Profile", backgroundColor: Color.heroColor)
-           
-//                Button {
-//                    toggle()
-//                } label: {
-//                    Text("Halo")
-//                }
-//
-//
-//                VStack{
-//                    Text("halo")
-//                        .background(Color.red)
-//                }
-//
 
-                HStack{
-                    Button {
-                        toggleNavigate()
-                    } label: {
-                        Text("Halo")
-                    }
-                }
-                .navigateTo(to: SettingsView(state: State()), when: $state.nextView)
-                
-                
-//                VStack{
-//                    ScrollView(showsIndicators: false){
-//                        Spacer(minLength: 40)
-//
-//                        VStack {
-////                            HStack(spacing: 20){
-////                                    VStack{
-////                                        Image("1")
-////                                            .resizable()
-////                                            .scaledToFill()
-////                                            .frame(width: 80, height: 80)
-////                                            .clipped()
-////                                            .cornerRadius(26.0)
-////                                    }
-////
-////                                    VStack(alignment: .leading){
-////                                        Text("San Engineer")
-////                                            .font(Font.system(size: 24, weight: .bold, design: .default))
-////                                        Text("Profile, Edit, and more")
-////                                            .font(Font.system(size: 16, weight: .regular, design: .default))
-////                                    }
-////
-////                                    Spacer()
-////
-////                                        NavigationLink(
-////                                            destination: Text("Destination"),
-////                                            label: {
-////                                                Image(systemName: "chevron.right").font(.body).accentColor(.primary)
-////                                            }).navigationBarHidden(true)
-////
-////
-////                                }
-////                                .padding(.horizontal, 20)
-////                                .padding(.vertical, 10)
-////
-//
-//                        }
-//
-//                        Spacer(minLength: 60)
-//
-//
-//
-//                        VStack{
-//
-//
-//
-//
-//
-////                            Divider()
-//
-//
-////                            HNavLinkWithEmojiText(destinationView: SettingsView(state: State())).navigationBarHidden(true)
-////                            Divider()
-////                            HNavLinkWithEmojiText(destinationView: SettingsView(state: State()))
-////                            Divider()
-////                            HNavLinkWithEmojiText(destinationView: SettingsView(state: State()))
-////                            Divider()
-//                        }
-////                        Spacer(minLength: 60)
-////                        VStack{
-////                            Divider()
-////                            HNavLinkWithEmojiText(destinationView: SettingsView(state: State()))
-////                            Divider()
-////                            HNavLinkWithEmojiText(destinationView: SettingsView(state: State()))
-////                            Divider()
-////                        }
-//
+//                HStack{
+//                    Button {
+//                        toggleNavigate()
+//                        print("\(state.nextView)")
+//                    } label: {
+//                        Text("Halo")
 //                    }
 //                }
+//
+                
+                VStack{
+                    ScrollView(showsIndicators: false){
+                        Spacer(minLength: 40)
+
+                        VStack(spacing: 60) {
+                            VStack {
+                               ImageTextSubtext(title: "San Engineer", subtitle: "Profile, edit and more")
+                            }
+                            
+                            VStack(spacing: 20){
+                                ForEach(0..<(self.state.profileCollection.count)){ item in
+                                    let collection = state.profileCollection[item]
+                                    
+                                    HNavLinkWithEmojiText(emoji: collection.icon , title: collection.title, caption: (collection.subtitle ?? ""), destinationView: SettingsView(state: State()))
+                                    
+                                    if(item == state.profileCollection.distance(from: state.profileCollection.startIndex, to: state.profileCollection.endIndex - 3)) {
+                                        Spacer(minLength: 40)
+                                    }
+                                }
+                                
+                                
+                            }
+                            
+                            VStack(){
+                                Text("Logout")
+                            }
+                        }
+                        .padding(.bottom, 100)
+                    }
+                }
 
             }
            
