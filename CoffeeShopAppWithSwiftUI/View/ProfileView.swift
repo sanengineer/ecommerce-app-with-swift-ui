@@ -34,7 +34,6 @@ struct ProfileView: View {
                 HStack{
                     Button {
                         toggleNavigate()
-                        print("\(state.bool)")
                     } label: {
                         Text("Halo")
                     }

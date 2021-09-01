@@ -10,18 +10,22 @@ import SwiftUI
 
 extension View {
     func navigateTo<NewView: View>(to view:NewView, when binding: Binding<Bool>) -> some View {
+        ZStack{
         NavigationView{
             VStack{
-                self
-                    .navigationBarTitle("")
-                    .navigationBarHidden(true)
-                
-                NavigationLink(
-                    destination:view.navigationBarTitle("").navigationBarHidden(true), isActive: binding
-                ){
-                    EmptyView()
+               
+                    self
+                        .navigationBarTitle("")
+                        .navigationBarHidden(true)
+                    
+                    NavigationLink(
+                        destination:view.navigationBarTitle("").navigationBarHidden(true), isActive: binding
+                    ){
+                        EmptyView()
+                    }
                 }
             }
+            
         }
     }
 }

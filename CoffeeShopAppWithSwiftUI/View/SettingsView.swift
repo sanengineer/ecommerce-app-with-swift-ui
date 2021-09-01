@@ -41,7 +41,8 @@ struct SettingsView: View {
                     Text("\(state.labelThemeColor)")
                 }
             }
-        }.preferredColorScheme(state.colorScheme)
+        }
+        .preferredColorScheme(state.colorScheme)
     }
     
     func toggleTheme(){
