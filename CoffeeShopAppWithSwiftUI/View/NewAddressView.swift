@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
+import SwiftUIRouter
 
 struct NewAddressView: View {
     
     @StateObject var state: State
     
     var body: some View {
-        VStack{
-            NavigationBar(navTitle: "", backgroundColor: .white, color: .black, hiddenLeftBarButton: false)
+        VStack(spacing: 0){
+            NavigationBar(navTitle: "", backgroundColor: .red, color: .black, hiddenLeftBarButton: false, pathRouter: "/profile/shipping")
             
             ScrollView(showsIndicators: false){
                 VStack(alignment: .leading, spacing: 50){
@@ -21,8 +22,8 @@ struct NewAddressView: View {
                     Text("New Address")
                         .font(Font.system(size: 20, weight: .bold, design: .default))
                         .foregroundColor(.heroColor)
+                        .padding(.top, 30)
                        
-                 
                     VStack(spacing: 50){
                         ForEach(0..<5){ _ in
                             VTextSubtextInputView(state: state)
@@ -30,14 +31,11 @@ struct NewAddressView: View {
                         Spacer()
                         ButtonView(label:"Save", height: 50, isOutlineStyle: true)
                     }
-                   
-                    
-                   
                 }
                 .padding(.horizontal, 20)
-                
             }
-        }
+            .background(Color.white)
+        }.ignoresSafeArea(edges: .all)
     }
 }
 

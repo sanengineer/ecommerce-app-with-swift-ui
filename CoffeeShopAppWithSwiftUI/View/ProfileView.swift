@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftUIRouter
 
 
 struct ProfileView: View {
@@ -45,7 +46,7 @@ struct ProfileView: View {
                                 ForEach(0..<(self.state.profileCollection.count)){ item in
                                     let collection = state.profileCollection[item]
                                     
-                                    HNavLinkWithEmojiText(emoji: collection.icon , title: collection.title, caption: (collection.subtitle ?? ""), destinationView: SettingsView(state: State()))
+                                    HNavLinkWithEmojiText(emoji: collection.icon , title: collection.title, caption: (collection.subtitle ?? ""), pathName: state.profileCollection[item].path)
                                     
                                     if(item == state.profileCollection.distance(from: state.profileCollection.startIndex, to: state.profileCollection.endIndex - 3)) {
                                         Spacer(minLength: 40)
@@ -54,6 +55,8 @@ struct ProfileView: View {
                                 
                                 
                             }
+                            
+                            
                             
                             VStack(){
                                 Button(action: {

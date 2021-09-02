@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftUIRouter
 
 struct TabBarView: View {
     
@@ -28,7 +29,7 @@ struct TabBarView: View {
 
                             Text(self.state.tabCollection[int].tabName)
                                 .font(Font.system(size: 14, weight: self.state.selectionTab == int ? .heavy : .regular, design: .default))
-                                .foregroundColor(.black)
+                                .foregroundColor(.foregroundColorSchemeApp)
                         }
                     }
                     .frame(width: 60)
@@ -42,8 +43,8 @@ struct TabBarView: View {
             .padding(.horizontal, 30)
             .padding(.top, 12)
             .padding(.bottom, (self.state.ratio) == (self.state.aspectScreen) ? 6 : 30 )
-            .background(Color.white)
-            .border(width: 1, edges:[.top], color: Color.darkLightColor, opacity: 1.0)
+            .background(Color.backgroundColorSchemeApp)
+            .border(width: 1, edges:[.top], color: Color.borderColorSchemeApp, opacity: 1.0)
             
        
     }

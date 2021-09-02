@@ -15,34 +15,47 @@ struct SettingsView: View {
     var body: some View {
         
         
-        VStack{
+        VStack(spacing: 0){
+            NavigationBar(navTitle: "Settings", hiddenLeftBarButton: false)
             
-            Image(systemName: "chevron.left")
-                .frame(width: 30)
-                .onTapGesture(count: 1, perform: {
-                        self.mode.wrappedValue.dismiss()
-                    })
-                
             
-            Button {
-                toggleTheme()
-                if state.bool == false {
-                    self.state.colorScheme = .dark
-                    self.state.labelThemeColor = "Light"
-                    self.state.iconName = "sun.min"
-                } else {
-                    self.state.colorScheme = .light
-                    self.state.iconName = "moon"
-                    self.state.labelThemeColor = "Dark"
-                }
-            } label: {
-                HStack(spacing:8){
-                    Image(systemName: state.iconName)
-                    Text("\(state.labelThemeColor)")
-                }
-            }
+            VStack{
+                    VStack{
+                        Text("halo")
+                    }
+                    
+                    VStack{
+                     
+                        
+                        Button {
+                            toggleTheme()
+                            if state.bool == false {
+                                self.state.colorScheme = .dark
+                                self.state.labelThemeColor = "Light"
+                                self.state.iconName = "sun.min"
+                            } else {
+                                self.state.colorScheme = .light
+                                self.state.iconName = "moon"
+                                self.state.labelThemeColor = "Dark"
+                            }
+                        } label: {
+                            HStack(spacing:8){
+                                Image(systemName: state.iconName)
+                                Text("\(state.labelThemeColor)")
+                            }
+                        }
+                    }
+              
+            }  .background(Color.red)
+           
+           
+            Spacer()
+         
+            
         }
         .preferredColorScheme(state.colorScheme)
+        .background(Color.backgroundColorSchemeApp)
+        .ignoresSafeArea(.all)
     }
     
     func toggleTheme(){

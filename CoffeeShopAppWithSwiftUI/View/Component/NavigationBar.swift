@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIRouter
 
 struct NavigationBar: View {
     
@@ -15,34 +16,41 @@ struct NavigationBar: View {
     var color: Color = .heroColorText
     var titleSize: CGFloat = 20
     var hiddenLeftBarButton: Bool = true
-    var leftBarButtonYPoint: CGFloat = 5
+    var leftBarButtonYPoint: CGFloat = 0
     var hiddenBorderBottom: Bool = true
+    var hiddenRightBarButton: Bool = true
+    var pathRouter: String = "home"
     
     var body: some View {
         VStack(alignment: .leading){
             Spacer()
-            if (hiddenLeftBarButton == false) {
-                Button(action: {
-                    print("Nav Left Button")
-                }, label: {
-                    Image(systemName: "chevron.left")
-                        .font(Font.system(size: 20, weight: .bold, design: .default))
-                        .foregroundColor(color)
-                })
-                .padding(.leading, 20)
-                .offset(x: 0, y: leftBarButtonYPoint)
-            } else {
-                EmptyView()
-            }
             
-            HStack(alignment: .bottom, spacing: 0){
+            
+            HStack(alignment: .center, spacing: 0){
                
+                
                 Group{
+                    if (hiddenLeftBarButton == false) {
+                        NavLink(to: pathRouter){
+                            Image(systemName: "chevron.left")
+                                .font(Font.system(size: 20, weight: .bold, design: .default))
+                                .foregroundColor(color)
+                        }
+                        Spacer()
+                    } else {
+                        EmptyView()
+                    }
+                    
                     Text(navTitle)
                         .font(Font.system(size: titleSize, weight: .bold, design: .default))
                         .foregroundColor(color)
                     Spacer()
-                    Image(systemName: "bell").foregroundColor(color)
+                    if hiddenRightBarButton == false{
+                        Image(systemName: "bell").foregroundColor(color)
+                    } else {
+                        EmptyView()
+                    }
+                   
                 }
                
             }

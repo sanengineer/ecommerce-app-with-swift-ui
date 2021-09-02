@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIRouter
 
 struct MainView: View {
 
@@ -15,32 +16,60 @@ struct MainView: View {
         
         VStack(spacing: -5){
             
+//            ZStack{
+//                switch state.tabCollection[state.selectionTab].path {
+//
+//                case "/menu":
+//                    Route(path:"/menu") {
+//                        MenuView(state: state)
+//                    }
+//
+//                case "/cart":
+//                    Route(path: "/cart") {
+//                        CartView()
+//                    }
+//
+//                case "/profile":
+//                    Route(path: "/profile") {
+//                        ProfileView(state: state)
+//                    }
+//                default :
+//                    Route {
+//                        HomeView(state: state)
+//                        .ignoresSafeArea(.all)
+//                    }
+//
+//                }
+//            }
+//
+//
+//            ZStack{
+//                SwitchRoutes {
+//                    Route(path: "/menu") {
+//                        MenuView(state: state)
+//                    }
+//                    Route(path: "/cart") { info in
+//                        CartView()
+//                    }
+//
+//                    Route(path: "/profile") {
+//                        ProfileView(state: state)
+//                    }
+//                    Route {
+//                        HomeView(state: State())
+//                    }
+//                }
+//            }
+            
             ZStack{
                 switch state.tabCollection[state.selectionTab].tabName {
-                
+
                 case "Menu":
-                    MenuView()
-                    
+                    MenuView(state: state)
+
                 case "Cart":
-                    NavigationView{
-                        VStack(alignment:.leading, spacing: 8){
-                            Text("Height: \(UIScreen.screenHeight)")
-                            Text("Width: \(UIScreen.screenWidth)")
-                            Text("Cross Result: \(UIScreen.screenHeight * UIScreen.screenWidth)")
-                            Text("Aspect Screen: \(UIScreen.screenHeight / UIScreen.screenWidth)")
-                            Text("Ratio:\(state.ratio)")
-                            Text("Add Result: \(UIScreen.screenHeight + UIScreen.screenWidth)")
-                            HStack{
-                                Text("aspectRatio = RatioScreen:")
-                                if state.ratio == state.aspectScreen {
-                                    Text("match (TRUE)").fontWeight(.bold)
-                                } else {
-                                    Text("Not Match (FALSE)").fontWeight(.bold)
-                                }
-                            }
-                        }
-                    }
-                
+                     CartView()
+
                 case "Profile":
                     ProfileView(state: state)
                 default :
@@ -48,10 +77,12 @@ struct MainView: View {
                     .ignoresSafeArea(.all)
                 }
             }
-            
+
             Spacer()
             
             TabBarView(state: state)
+//            TabBarViewWithRouter(state: state)
+          
         }
         .ignoresSafeArea(.all)
     }

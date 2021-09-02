@@ -33,6 +33,14 @@ extension View {
         overlay(EdgeBorder(width: width, edges: edges).foregroundColor(color).opacity(opacity))
     }
     
+    func navigationTransition() -> some View {
+            modifier(NavigationTransition())
+        }
+    
+    func navigationTransitionOpaticy() -> some View {
+            modifier(NavigationTransitionOpacity())
+    }
+    
     @ViewBuilder func `if`<Content: View>(_ condition: @autoclosure () -> Bool, transform: (Self) -> Content) -> some View {
         if condition() {
             transform(self)

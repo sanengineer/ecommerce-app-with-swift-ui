@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ShippingDetailView: View {
+    
     var body: some View {
         VStack(spacing: 0){
-            NavigationBar(navTitle: "Shipping Detail", backgroundColor: .white, color: .black, titleSize: 26, hiddenLeftBarButton: false, hiddenBorderBottom: false)
+            NavigationBar(navTitle: "Shipping Detail", backgroundColor: .white, color: .black, titleSize: 26, hiddenLeftBarButton: false, hiddenBorderBottom: false, pathRouter: "/profile")
           
            
                 ScrollView(showsIndicators: false){
@@ -24,8 +25,8 @@ struct ShippingDetailView: View {
                         VCardTextButton().frame(height: 240)
                         VCardTextButton().frame(height: 240)
                     }.padding(.horizontal, 20)
-                }
-        }
+                }.background(Color.white)
+        }.ignoresSafeArea(edges: .all)
     }
 }
 

@@ -56,7 +56,7 @@ struct HomeView: View {
                 .mask(
                     LinearGradient(gradient: Gradient(colors: [Color.black, Color.black.opacity(0)]), startPoint: .top, endPoint: .bottom)
                 )
-                .offset(x: 0, y: self.state.ratio == state.aspectScreen ? 46 : 70 )
+                .offset(x: 0, y: self.state.ratio == state.aspectScreen ? 46 : 68 )
 
                 
                 HStack{

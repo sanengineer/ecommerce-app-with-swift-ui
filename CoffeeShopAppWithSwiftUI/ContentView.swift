@@ -6,12 +6,38 @@
 //
 
 import SwiftUI
+import SwiftUIRouter
 
 struct ContentView: View {
     
     var body: some View {
   
-        MainView(state: State())
+        Router {
+            ZStack{
+                MainView(state: State())
+                
+                Route(path: "/menu/profile_detail"){
+                    NewAddressView(state: State())
+                        
+                }.navigationTransitionOpaticy()
+                
+                Route(path: "/profile/biodata") {
+                    ProfileDetailView()
+                }
+                
+                
+                
+                Route(path: "/profile/shipping") {
+                    ShippingDetailView()
+                }.navigationTransitionOpaticy()
+                
+                Route(path: "/profile/settings") {
+                    SettingsView(state: State())
+                }
+            }
+            
+        }
+       
     }
     
 }

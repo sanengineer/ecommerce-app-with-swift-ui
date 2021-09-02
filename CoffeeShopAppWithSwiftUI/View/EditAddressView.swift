@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIRouter
 
 struct EditAddressView: View {
     
@@ -30,7 +31,7 @@ struct EditAddressView: View {
                 }
                 .padding(.horizontal, 20)
             }
-        }
+        }.ignoresSafeArea(.all)
     }
 }
 

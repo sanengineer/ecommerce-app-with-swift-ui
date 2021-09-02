@@ -14,4 +14,7 @@ extension Color {
     static let heroColor = Color("HeroColor")
     static let heroColor100 = Color("HeroColor100")
     static let darkLightColor = Color("DarkLightColor")
+    static let backgroundColorSchemeApp = Color("BackgroundColorSchemeApp")
+    static let foregroundColorSchemeApp = Color("ForegroundColorSchemeApp")
+    static let borderColorSchemeApp = Color("BorderColorSchemeApp")
 }

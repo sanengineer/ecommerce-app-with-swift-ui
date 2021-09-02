@@ -7,12 +7,13 @@
 
 import Foundation
 import SwiftUI
+import SwiftUIRouter
 
-struct HNavLinkWithEmojiText<Content:View>: View {
+struct HNavLinkWithEmojiText: View {
     var emoji: String = "👋"
     var title: String = "Title"
     var caption: String = "Caption"
-    var destinationView: Content
+    var pathName: String = "home"
     
     var body: some View {
         HStack(spacing: 20){
@@ -28,9 +29,9 @@ struct HNavLinkWithEmojiText<Content:View>: View {
             }
             
             Spacer()
-            NavigationLink(destination: destinationView){
-                    Image(systemName: "chevron.right").font(.body).accentColor(.primary)
-                }
+            NavLink(to: pathName) {
+                Image(systemName: "chevron.right").font(.body).accentColor(.primary)
+            }
            
         }
         .padding(.horizontal, 20)
