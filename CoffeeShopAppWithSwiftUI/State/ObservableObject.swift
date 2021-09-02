@@ -50,4 +50,6 @@ class State: ObservableObject {
     @Published var ratio: CGFloat = 16/9
     @Published var profile = profileItem.self
     @Published var aspectScreen: CGFloat = (UIScreen.screenHeight)/(UIScreen.screenWidth)
+    @Published var fieldText = ""
+    @Published var isfieldTextTapped = false
 }

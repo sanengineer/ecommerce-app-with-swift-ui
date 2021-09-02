@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainView: View {
 
-    
     @StateObject var state : State
     
     var body: some View {
