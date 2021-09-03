@@ -12,28 +12,26 @@ struct NavigationBar: View {
     
     var navTitle: String = "\(UIScreen.screenHeight)"
     var backgroundColor: Color = .heroColor
+    var colorBorderNav: Color = .borderColorSchemeApp
     var divideNumber: CGFloat = 9.35
     var color: Color = .heroColorText
     var titleSize: CGFloat = 20
+    var iconName: String = "bell"
     var hiddenLeftBarButton: Bool = true
-    var leftBarButtonYPoint: CGFloat = 0
     var hiddenBorderBottom: Bool = true
     var hiddenRightBarButton: Bool = true
-    var pathRouter: String = "home"
+    var pathRouterLeftBar: String = "home"
+    var pathRouterRightBar: String = "home"
     
     var body: some View {
         VStack(alignment: .leading){
             Spacer()
-            
-            
             HStack(alignment: .center, spacing: 0){
-               
-                
                 Group{
                     if (hiddenLeftBarButton == false) {
-                        NavLink(to: pathRouter){
+                        NavLink(to: pathRouterLeftBar){
                             Image(systemName: "chevron.left")
-                                .font(Font.system(size: 20, weight: .bold, design: .default))
+                                .font(Font.system(size: 20, weight: .medium, design: .default))
                                 .foregroundColor(color)
                         }
                         Spacer()
@@ -46,7 +44,11 @@ struct NavigationBar: View {
                         .foregroundColor(color)
                     Spacer()
                     if hiddenRightBarButton == false{
-                        Image(systemName: "bell").foregroundColor(color)
+                        NavLink(to: pathRouterRightBar) {
+                            Image(systemName: iconName)  .font(Font.system(size: 20, weight: .medium, design: .default))
+                                .foregroundColor(color)
+                        }
+                        
                     } else {
                         EmptyView()
                     }
@@ -59,12 +61,7 @@ struct NavigationBar: View {
         }
         .frame(height: UIScreen.screenHeight/(divideNumber))
         .background(backgroundColor)
-        .if( hiddenBorderBottom == false, transform: { view in
-            view.border(width: 1, edges: [.bottom], color: .darkLightColor, opacity: 1.0)
-        })
-    
-        
-        
+        .border(width: 1, edges: [.bottom], color: hiddenBorderBottom ? .backgroundColorSchemeApp : colorBorderNav, opacity: 1.0)
     }
 }
 

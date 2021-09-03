@@ -23,14 +23,12 @@ struct MenuView: View {
           
             VStack{
                 ScrollView(showsIndicators: false){
-                  
-                            
-                       
                 }
                 
                 .background(Color.red)
             }
            
         }
+       
     }
 }

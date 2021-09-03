@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct VCardTextButton: View {
+    
     var title: String = "Title"
     var desc: String = "Description description description description description description description description description description description description description "
     var isDefault: Bool = true
-    var color: Color = .black
+    var color: Color = .foregroundColorSchemeApp
     var height: CGFloat = 250
+    var pathRouter: String = "home"
+    var labelButton: String = "Edit"
+    
     var body: some View {
         GeometryReader{ proxy in
            
@@ -49,26 +53,19 @@ struct VCardTextButton: View {
                     }.lineLimit(6)
                     .frame(width: UIScreen.screenWidth - (UIScreen.screenWidth/4), alignment: .leading)
                 
-                    ButtonView(labelSize:14, height:55)
+                    NavLinkView(label: labelButton, labelSize:14, height:55, pathRouter: pathRouter)
                 }
                 .padding(.horizontal, 20)
-                
-                
             }
-               
-            
             .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
-            .background(Color.white)
+            .background(Color.backgroundColorSchemeApp)
             .cornerRadius(14, antialiased: true)
             .overlay(
                 RoundedRectangle(cornerRadius: 14)
                     .strokeBorder(lineWidth: 1, antialiased: true)
-                    .foregroundColor(.gray).opacity(0.5)
+                    .foregroundColor(.borderColorSchemeApp)
             )
-            
-           
         }
-       
     }
 }
 

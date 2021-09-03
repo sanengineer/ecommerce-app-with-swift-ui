@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIRouter
 
 struct VTextSubtextView: View {
     var text: String = "Title"
@@ -16,6 +17,7 @@ struct VTextSubtextView: View {
     var subtextWeight: Font.Weight = .regular
     var hiddenButton: Bool = true
     var paddingActive: Bool = true
+    var pathRouter: String = "home"
     
     var body: some View {
         HStack {
@@ -28,13 +30,11 @@ struct VTextSubtextView: View {
             Spacer()
             
             if hiddenButton == false {
-                Button(action: {
-                    print("profile detail")
-                }, label: {
+                NavLink(to: pathRouter ){
                     Text("Edit")
                         .font(Font.system(size: 14, weight: .heavy, design: .default))
                         .foregroundColor(Color.darkLightColor)
-                })
+                }
             }
             
         }

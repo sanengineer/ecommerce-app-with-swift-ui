@@ -14,7 +14,7 @@ struct NewAddressView: View {
     
     var body: some View {
         VStack(spacing: 0){
-            NavigationBar(navTitle: "", backgroundColor: .red, color: .black, hiddenLeftBarButton: false, pathRouter: "/profile/shipping")
+            NavigationBar(navTitle: "", backgroundColor: .backgroundColorSchemeApp, color: .foregroundColorSchemeApp, hiddenLeftBarButton: false, pathRouterLeftBar: "/profile/shipping")
             
             ScrollView(showsIndicators: false){
                 VStack(alignment: .leading, spacing: 50){
@@ -34,7 +34,7 @@ struct NewAddressView: View {
                 }
                 .padding(.horizontal, 20)
             }
-            .background(Color.white)
+            .background(Color.backgroundColorSchemeApp)
         }.ignoresSafeArea(edges: .all)
     }
 }

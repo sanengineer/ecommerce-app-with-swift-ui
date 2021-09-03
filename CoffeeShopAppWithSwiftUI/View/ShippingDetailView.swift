@@ -11,7 +11,7 @@ struct ShippingDetailView: View {
     
     var body: some View {
         VStack(spacing: 0){
-            NavigationBar(navTitle: "Shipping Detail", backgroundColor: .white, color: .black, titleSize: 26, hiddenLeftBarButton: false, hiddenBorderBottom: false, pathRouter: "/profile")
+            NavigationBar(navTitle: "Shipping Detail", backgroundColor: .backgroundColorSchemeApp, color: .foregroundColorSchemeApp, iconName: "plus", hiddenLeftBarButton: false, hiddenBorderBottom: false, hiddenRightBarButton: false, pathRouterLeftBar: "/profile", pathRouterRightBar: "/profile/shipping/new_address")
           
            
                 ScrollView(showsIndicators: false){
@@ -20,12 +20,13 @@ struct ShippingDetailView: View {
                         Text("Addresses")
                             .font(Font.system(size: 20, weight: .bold, design: .default))
                             .padding(.top, 10)
+                            .foregroundColor(.foregroundColorSchemeApp)
                         
-                        VCardTextButton().frame(height: 240)
-                        VCardTextButton().frame(height: 240)
-                        VCardTextButton().frame(height: 240)
+                        VCardTextButton(pathRouter:"/profile/shipping/edit_address").frame(height: 240)
+                        VCardTextButton(pathRouter:"/profile/shipping/edit_address").frame(height: 240)
+                        VCardTextButton(pathRouter:"/profile/shipping/edit_address").frame(height: 240)
                     }.padding(.horizontal, 20)
-                }.background(Color.white)
+                }.background(Color.backgroundColorSchemeApp)
         }.ignoresSafeArea(edges: .all)
     }
 }

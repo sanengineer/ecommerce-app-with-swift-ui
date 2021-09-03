@@ -16,51 +16,6 @@ struct MainView: View {
         
         VStack(spacing: -5){
             
-//            ZStack{
-//                switch state.tabCollection[state.selectionTab].path {
-//
-//                case "/menu":
-//                    Route(path:"/menu") {
-//                        MenuView(state: state)
-//                    }
-//
-//                case "/cart":
-//                    Route(path: "/cart") {
-//                        CartView()
-//                    }
-//
-//                case "/profile":
-//                    Route(path: "/profile") {
-//                        ProfileView(state: state)
-//                    }
-//                default :
-//                    Route {
-//                        HomeView(state: state)
-//                        .ignoresSafeArea(.all)
-//                    }
-//
-//                }
-//            }
-//
-//
-//            ZStack{
-//                SwitchRoutes {
-//                    Route(path: "/menu") {
-//                        MenuView(state: state)
-//                    }
-//                    Route(path: "/cart") { info in
-//                        CartView()
-//                    }
-//
-//                    Route(path: "/profile") {
-//                        ProfileView(state: state)
-//                    }
-//                    Route {
-//                        HomeView(state: State())
-//                    }
-//                }
-//            }
-            
             ZStack{
                 switch state.tabCollection[state.selectionTab].tabName {
 
@@ -72,6 +27,7 @@ struct MainView: View {
 
                 case "Profile":
                     ProfileView(state: state)
+                        .ignoresSafeArea(.all)
                 default :
                     HomeView(state: state)
                     .ignoresSafeArea(.all)

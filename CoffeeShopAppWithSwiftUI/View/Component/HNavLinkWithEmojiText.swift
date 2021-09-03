@@ -14,6 +14,10 @@ struct HNavLinkWithEmojiText: View {
     var title: String = "Title"
     var caption: String = "Caption"
     var pathName: String = "home"
+    var disableButton: Bool = true
+    var enableCaption: Bool = true
+    var isPaddingActive: Bool = true
+    var action: () -> Void
     
     var body: some View {
         HStack(spacing: 20){
@@ -24,17 +28,35 @@ struct HNavLinkWithEmojiText: View {
             VStack(alignment: .leading){
                 Text(title)
                     .font(Font.system(size: 18, weight: .medium, design: .default))
-                Text(caption)
-                    .font(Font.system(size: 14, weight: .light, design: .default))
+                if enableCaption == true {
+                    Text(caption)
+                        .font(Font.system(size: 14, weight: .light, design: .default))
+                }
             }
             
             Spacer()
-            NavLink(to: pathName) {
-                Image(systemName: "chevron.right").font(.body).accentColor(.primary)
+            if disableButton == true {
+                NavLink(to: pathName) {
+                    Image(systemName: "chevron.right").font(.body).accentColor(.primary)
+                }
+            } else {
+                
             }
+            
+            
+           if disableButton == false {
+            Button(action: action) {
+                Image(systemName: "ellipsis").font(.body).accentColor(.primary)
+            }
+            }
+            
            
         }
-        .padding(.horizontal, 20)
-        .padding(.vertical, 10)
+        .if(isPaddingActive, transform: { view in
+            view
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+        })
+        
     }
 }

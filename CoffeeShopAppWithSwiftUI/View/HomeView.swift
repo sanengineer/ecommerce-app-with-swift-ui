@@ -52,7 +52,7 @@ struct HomeView: View {
                     
                 }
                 .frame(width: UIScreen.screenWidth, height:(UIScreen.screenHeight - 120))
-                .background(Color.red)
+                .background(Color.heroColor)
                 .mask(
                     LinearGradient(gradient: Gradient(colors: [Color.black, Color.black.opacity(0)]), startPoint: .top, endPoint: .bottom)
                 )
@@ -67,7 +67,7 @@ struct HomeView: View {
                 .offset(x: 0, y: 350)
                 
                 VStack(spacing:0){
-                    NavigationBar(navTitle:"Coffee Shop", backgroundColor: Color.red)
+                    NavigationBar(navTitle:"Coffee Shop", backgroundColor: .heroColor, colorBorderNav: .heroColor, hiddenBorderBottom: false)
                     .background(Color.red)
                 
                     ScrollView(showsIndicators: false){

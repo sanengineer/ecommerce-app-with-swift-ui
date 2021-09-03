@@ -32,7 +32,6 @@ struct profileItem: Codable {
 class State: ObservableObject {
     @Published var iconName: String = "moon"
     @Published var labelThemeColor: String = "Dark"
-    @Published var colorScheme: ColorScheme? = nil
     @Published var bool = false
     @Published var nextView: Bool = true
     @Published var selectionTab = 0
@@ -55,6 +54,7 @@ class State: ObservableObject {
     @Published var aspectScreen: CGFloat = (UIScreen.screenHeight)/(UIScreen.screenWidth)
     @Published var fieldText = ""
     @Published var isfieldTextTapped = false
+    @Published var isExpandNavBar = false
     
     // MARK: - Route Path
     @Published var profile_detail_path: String = "/menu/profile_detail"

@@ -25,19 +25,19 @@ struct SettingsView: View {
                     }
                     
                     VStack{
-                     
-                        
                         Button {
-                            toggleTheme()
-                            if state.bool == false {
-                                self.state.colorScheme = .dark
-                                self.state.labelThemeColor = "Light"
-                                self.state.iconName = "sun.min"
-                            } else {
-                                self.state.colorScheme = .light
-                                self.state.iconName = "moon"
-                                self.state.labelThemeColor = "Dark"
-                            }
+                            print("\(state.bool)")
+                            self.state.bool.toggle()
+                            
+                            UIApplication.shared.windows.first?.rootViewController?.view.overrideUserInterfaceStyle = self.state.bool ? .dark : .light
+//                            toggleTheme()
+//                            if state.bool{
+//                                self.state.labelThemeColor = "Light"
+//                                self.state.iconName = "sun.min"
+//                            } else {
+//                                self.state.iconName = "moon"
+//                                self.state.labelThemeColor = "Dark"
+//                            }
                         } label: {
                             HStack(spacing:8){
                                 Image(systemName: state.iconName)
@@ -53,7 +53,6 @@ struct SettingsView: View {
          
             
         }
-        .preferredColorScheme(state.colorScheme)
         .background(Color.backgroundColorSchemeApp)
         .ignoresSafeArea(.all)
     }

@@ -27,7 +27,6 @@ struct CardRoundedImageTextView: View {
                     .font(Font.system(size: 14, weight: .bold, design: .default))
                 }
                 .layoutPriority(100)
-//                .background(Color.red)
                 Spacer()
             }.padding()
         }

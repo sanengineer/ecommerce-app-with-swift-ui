@@ -13,14 +13,14 @@ struct EditAddressView: View {
     @StateObject var state: State
     
     var body: some View {
-        VStack{
-            NavigationBar(navTitle: "", backgroundColor: .white, color: .black, hiddenLeftBarButton: false)
+        VStack(spacing:0){
+            NavigationBar(navTitle: "", backgroundColor: .backgroundColorSchemeApp  , color: .foregroundColorSchemeApp, hiddenLeftBarButton: false, pathRouterLeftBar: "/profile/shipping")
             
             ScrollView(showsIndicators: false){
                 VStack(alignment: .leading, spacing: 50){
                     Text("Edit Address")
                         .font(Font.system(size: 20, weight: .bold, design: .default))
-                        .foregroundColor(.black)
+                        .foregroundColor(.foregroundColorSchemeApp)
                     VStack(spacing: 50){
                         ForEach(0..<5){ _ in
                             VTextSubtextInputView(state: state, hideLabelTextField: false)
@@ -31,7 +31,9 @@ struct EditAddressView: View {
                 }
                 .padding(.horizontal, 20)
             }
-        }.ignoresSafeArea(.all)
+        }
+        .background(Color.backgroundColorSchemeApp)
+        .ignoresSafeArea(.all)
     }
 }
 

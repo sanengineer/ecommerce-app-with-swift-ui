@@ -10,7 +10,7 @@ import SwiftUI
 struct EditProfileView: View {
     var body: some View {
         VStack(spacing: 40){
-            NavigationBar(navTitle: "Edit Profile", backgroundColor: .white, color: .black, titleSize: 26, hiddenLeftBarButton: false, hiddenBorderBottom: false)
+            NavigationBar(navTitle: "Edit Profile", backgroundColor: .backgroundColorSchemeApp, color: .foregroundColorSchemeApp, hiddenLeftBarButton: false, hiddenBorderBottom: false, pathRouterLeftBar: "/profile/biodata")
             
             VStack(spacing: 40){
                 VTextSubtextView(text: "Fullname", textWeight: .medium, subtext: "San Engineeer", subtextSize: 24, subtextWeight: .bold, hiddenButton: true, paddingActive: false)
@@ -24,6 +24,8 @@ struct EditProfileView: View {
             Spacer()
             
         }
+        .background(Color.backgroundColorSchemeApp)
+        .ignoresSafeArea(.all)
     }
 }
 

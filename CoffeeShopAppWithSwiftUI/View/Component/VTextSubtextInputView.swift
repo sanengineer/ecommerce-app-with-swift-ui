@@ -44,7 +44,7 @@ struct VTextSubtextInputView: View {
 
             }
             .padding(.vertical, 12)
-            .border(width: 1, edges: [.bottom], color: .darkLightColor, opacity: 1.0)
+            .border(width: 1, edges: [.bottom], color: .borderColorSchemeApp, opacity: 1.0)
     }
 }
 

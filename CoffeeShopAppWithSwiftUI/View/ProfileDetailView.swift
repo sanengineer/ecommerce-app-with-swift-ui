@@ -11,23 +11,23 @@ import SwiftUIRouter
 struct ProfileDetailView: View {
     var body: some View {
             VStack(spacing: 0){
-                VStack(spacing: 50){
-                    NavigationBar(navTitle: "Biodata", backgroundColor: .white, color: .black, titleSize: 26, hiddenLeftBarButton: false, hiddenBorderBottom: false)
+                    NavigationBar(navTitle: "Biodata", backgroundColor: .backgroundColorSchemeApp, color: .foregroundColorSchemeApp, hiddenLeftBarButton: false, hiddenBorderBottom: false)
                     
-                    VStack(spacing:20){
-                       
-                        ForEach(0..<5){ int in
-                            VTextSubtextView()
+                    VStack(spacing:0){
+                        ScrollView(showsIndicators: false){
+                            Spacer(minLength: 40)
+                            
+                            VStack(spacing: 20){
+                                ForEach(0..<5){ int in
+                                    VTextSubtextView(hiddenButton:false, pathRouter: "/profile/biodata/edit")
+                                }
+                            }
                         }
+                       
                     }
-                }
-                Spacer()
-                
-                
-               
             }
             .background(Color.backgroundColorSchemeApp)
-            .ignoresSafeArea(edges: .all)
+            .ignoresSafeArea(.all)
     }
 }
 

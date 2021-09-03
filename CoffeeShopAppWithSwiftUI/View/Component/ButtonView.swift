@@ -10,10 +10,11 @@ import SwiftUI
 struct ButtonView: View {
     
     var backgroundColor: Color = .heroColor
-    var color: Color = .white
+    var color: Color = .backgroundColorSchemeApp
     var label: String = "Button"
     var labelSize: CGFloat = 16
     var height: CGFloat = 60
+    var isFixHeight: Bool = true
     var isHeightDefault: Bool = true
     var isOutlineStyle: Bool = false
     
@@ -22,6 +23,7 @@ struct ButtonView: View {
         GeometryReader{ proxy in
             Button(action: {
                 print("Button Custom")
+               
             }, label: {
                 
                
@@ -32,7 +34,7 @@ struct ButtonView: View {
                             width: proxy.size.width ,
                             height: proxy.size.height,
                             alignment: .center)
-                        .background(isOutlineStyle == false ?  backgroundColor : .white)
+                        .background(isOutlineStyle == false ?  backgroundColor : .backgroundColorSchemeApp)
                         .cornerRadius(10.0)
                         .if(isOutlineStyle == true, transform: { view in
                             view.overlay(
@@ -46,7 +48,11 @@ struct ButtonView: View {
                 
             })
         
-        }.frame(height: height)
+        }.if(isFixHeight == true, transform: { view in
+            view.frame(height: height)
+        })
+        
+       
         
     }
 }

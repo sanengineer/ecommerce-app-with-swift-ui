@@ -17,23 +17,10 @@ struct ProfileView: View {
    
     
     var body: some View {
-        
-        
-        
             VStack(spacing: 0){
                 NavigationBar(navTitle:"Profile", backgroundColor: Color.heroColor)
-
-//                HStack{
-//                    Button {
-//                        toggleNavigate()
-//                        print("\(state.nextView)")
-//                    } label: {
-//                        Text("Halo")
-//                    }
-//                }
-//
                 
-                VStack{
+                VStack(spacing:0){
                     ScrollView(showsIndicators: false){
                         Spacer(minLength: 40)
 
@@ -46,7 +33,7 @@ struct ProfileView: View {
                                 ForEach(0..<(self.state.profileCollection.count)){ item in
                                     let collection = state.profileCollection[item]
                                     
-                                    HNavLinkWithEmojiText(emoji: collection.icon , title: collection.title, caption: (collection.subtitle ?? ""), pathName: state.profileCollection[item].path)
+                                    HNavLinkWithEmojiText(emoji: collection.icon , title: collection.title, caption: (collection.subtitle ?? ""), pathName: state.profileCollection[item].path, action: {})
                                     
                                     if(item == state.profileCollection.distance(from: state.profileCollection.startIndex, to: state.profileCollection.endIndex - 3)) {
                                         Spacer(minLength: 40)
