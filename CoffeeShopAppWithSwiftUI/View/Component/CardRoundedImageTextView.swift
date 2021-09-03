@@ -34,7 +34,7 @@ struct CardRoundedImageTextView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .strokeBorder(lineWidth: 1, antialiased: true)
-                .foregroundColor(.gray).opacity(0.5)
+                .foregroundColor(.borderColorSchemeApp)
         )
     }
 }

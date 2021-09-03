@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftUIRouter
 
 struct Category {
    var name: String
@@ -134,17 +135,23 @@ struct HomeView: View {
                                         ScrollView(.horizontal, showsIndicators: false){
                                             HStack(spacing: 20){
                                                 ForEach(0..<categoryName.count){ data in
-                                                    HStack{
-                                                        Text(categoryName[data].icon)
-                                                        Text(categoryName[data].name)
-                                                            .font(Font.system(size: 16, weight: .medium, design: .default))
-                                                        }
-                                                        .frame(width: 120, height: 50, alignment: .center)
-                                                        .overlay(
-                                                            RoundedRectangle(cornerRadius:10.0)
-                                                                .strokeBorder(lineWidth: 1.0, antialiased: true)
-                                                                .foregroundColor(.gray).opacity(0.5)
-                                                            )
+                                                    
+                                                    
+                                                    NavLink(to: "/category") {
+                                                        HStack{
+                                                            Text(categoryName[data].icon)
+                                                            Text(categoryName[data].name)
+                                                                .font(Font.system(size: 16, weight: .medium, design: .default))
+                                                                .foregroundColor(.foregroundColorSchemeApp)
+                                                            }
+                                                            .frame(width: 120, height: 50, alignment: .center)
+                                                            .overlay(
+                                                                RoundedRectangle(cornerRadius:10.0)
+                                                                    .strokeBorder(lineWidth: 1.0, antialiased: true)
+                                                                    .foregroundColor(.gray).opacity(0.5)
+                                                                )
+                                                    }
+                                                    
                                                         }
                                                     }
                                         }

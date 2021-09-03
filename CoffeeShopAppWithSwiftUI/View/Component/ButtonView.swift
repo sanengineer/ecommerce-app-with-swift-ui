@@ -17,6 +17,9 @@ struct ButtonView: View {
     var isFixHeight: Bool = true
     var isHeightDefault: Bool = true
     var isOutlineStyle: Bool = false
+    var cornerRadius: CGFloat = 10
+    var borderWidth: CGFloat = 2
+    var borderColor: Color = .heroColor
     
     var body: some View {
         
@@ -35,12 +38,12 @@ struct ButtonView: View {
                             height: proxy.size.height,
                             alignment: .center)
                         .background(isOutlineStyle == false ?  backgroundColor : .backgroundColorSchemeApp)
-                        .cornerRadius(10.0)
+                        .cornerRadius(cornerRadius)
                         .if(isOutlineStyle == true, transform: { view in
                             view.overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(lineWidth: 2)
-                                    .foregroundColor(.heroColor)
+                                RoundedRectangle(cornerRadius: cornerRadius)
+                                    .stroke(lineWidth: borderWidth)
+                                    .foregroundColor(borderColor)
                             )
                         })
                         

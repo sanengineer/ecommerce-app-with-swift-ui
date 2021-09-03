@@ -18,37 +18,98 @@ struct RootView: View {
             ZStack(alignment: .center){
                 MainView(state: state)
                 
-                Route(path: "/menu/profile_detail"){
-                    NewAddressView(state: state)
+                ProductRoute(state: state)
+                
+                Route(path: "/category") {
+                    CategoryView()
                 }
                 
-                Route(path: "/cart/order") {
-                    OrderView(state: state)
-                }
+                MenuRoute(state: state)
                 
-                Route(path: "/profile/biodata") {
-                    ProfileDetailView()
-                }
+                CartRoute(state: state)
                 
-                Route(path: "/profile/biodata/edit") {
-                    EditProfileView()
-                }
+                ProfileRoute(state: state)
                 
-                Route(path: "/profile/shipping") {
-                    ShippingDetailView()
-                }
-                Route(path: "/profile/shipping/new_address") {
-                    NewAddressView(state: state)
-                }
-                Route(path: "/profile/shipping/edit_address"){
-                    EditAddressView(state: state)
-                }
                 
-                Route(path: "/profile/settings") {
-                    SettingsView(state: state)
-                }
             }
             .preferredColorScheme(self.state.bool ? .dark : .light)
+        }
+    }
+}
+
+
+
+struct ProductRoute: View {
+    
+    @StateObject var state: State
+    
+    var body: some View{
+        
+        Group{
+            Route(path: "/product/1") {
+                ProductDetailView(state: state)
+            }
+        }
+       
+    }
+}
+
+
+struct MenuRoute: View {
+    @StateObject var state: State
+    
+    var body: some View{
+        Group{
+            Route(path: "/menu/profile_detail"){
+                NewAddressView(state: state)
+            }
+        }
+    }
+}
+
+
+struct CartRoute: View {
+    
+    @StateObject var state: State
+    
+    var body: some View {
+        Group{
+            Route(path: "/cart/order") {
+                OrderView(state: state)
+            }
+        }
+    }
+}
+
+
+struct ProfileRoute: View {
+    
+    @StateObject var state: State
+    
+    var body: some View {
+        
+        Group{
+            Route(path: "/profile/biodata") {
+                ProfileDetailView()
+            }
+            
+            Route(path: "/profile/biodata/edit") {
+                EditProfileView()
+            }
+            
+            Route(path: "/profile/shipping") {
+                ShippingDetailView()
+            }
+            Route(path: "/profile/shipping/new_address") {
+                NewAddressView(state: state)
+            }
+            Route(path: "/profile/shipping/edit_address"){
+                EditAddressView(state: state)
+            }
+            
+            Route(path: "/profile/settings") {
+                SettingsView(state: state)
+            }
         }
     }
 }

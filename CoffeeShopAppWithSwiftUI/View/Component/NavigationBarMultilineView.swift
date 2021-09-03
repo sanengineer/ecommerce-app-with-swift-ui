@@ -10,11 +10,13 @@ import SwiftUIRouter
 
 struct NavigationBarMultilineView: View {
     var navTitle: String = "\(UIScreen.screenHeight)"
+    var navTitleLine2: String = "\(UIScreen.screenHeight)"
     var backgroundColor: Color = .heroColor
     var colorBorderNav: Color = .borderColorSchemeApp
     var divideNumber: CGFloat = 9.35
     var color: Color = .heroColorText
     var titleSize: CGFloat = 20
+    var titleSizeLine2: CGFloat = 20
     var iconName: String = "bell"
     var hiddenLeftBarButton: Bool = true
     var hiddenBorderBottom: Bool = true
@@ -70,23 +72,24 @@ struct NavigationBarMultilineView: View {
                    
                 }
                 .frame(height: 48)
-                .background(Color.gray)
                 
                 if state.isExpandNavBar {
                     HStack(alignment:.center, spacing: 0){
-                            Text(navTitle)
-                                .font(Font.system(size: titleSize, weight: .bold, design: .default))
-                                .foregroundColor(color)
+                        Button {
+                            self.state.isExpandNavBar.toggle()
+                        } label:{
+                            Text(navTitleLine2)
+                                .font(Font.system(size: titleSizeLine2, weight: .bold, design: .default))
+                                .foregroundColor(color).opacity(0.5)
+                        }
                     }
                     .frame(height: 48)
-                    .background(Color.green)
                 }
             }
-            .background(Color.blue)
             .offset(x: 0, y: 0)
         }
         .frame(height: state.isExpandNavBar ? (UIScreen.screenHeight/(divideNumber) * 2) - 42.25 : UIScreen.screenHeight/(divideNumber))
-        .background(Color.red)
+        .background(Color.backgroundColorSchemeApp)
         .padding(.horizontal, 20)
         .border(width: 1, edges: [.bottom], color: hiddenBorderBottom ? .backgroundColorSchemeApp : colorBorderNav, opacity: 1.0)
     }

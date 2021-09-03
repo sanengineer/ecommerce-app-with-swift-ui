@@ -18,7 +18,14 @@ struct OrderView: View {
             }, state: state)
             
             ZStack{
-                ShipmentView()
+                switch state.isExpandNavBar {
+                case false :
+                    PickupView()
+                default :
+                    ShipmentView()
+                }
+                
+               
             }
             
             VStack(spacing: 0){
