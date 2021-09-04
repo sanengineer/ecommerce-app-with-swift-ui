@@ -17,4 +17,5 @@ extension Color {
     static let backgroundColorSchemeApp = Color("BackgroundColorSchemeApp")
     static let foregroundColorSchemeApp = Color("ForegroundColorSchemeApp")
     static let borderColorSchemeApp = Color("BorderColorSchemeApp")
+    static let borderBoldColorSchemeApp = Color("BorderBoldColorSchemeApp")
 }

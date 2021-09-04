@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ShippingDetailView: View {
     
+    var textSize20: CGFloat = 20
+    
     var body: some View {
         VStack(spacing: 0){
             NavigationBar(navTitle: "Shipping Detail", backgroundColor: .backgroundColorSchemeApp, color: .foregroundColorSchemeApp, iconName: "plus", hiddenLeftBarButton: false, hiddenBorderBottom: false, hiddenRightBarButton: false, pathRouterLeftBar: "/profile", pathRouterRightBar: "/profile/shipping/new_address")
@@ -18,7 +20,8 @@ struct ShippingDetailView: View {
                     Spacer(minLength: 40)
                     VStack(alignment: .leading ,spacing: 32){
                         Text("Addresses")
-                            .font(Font.system(size: 20, weight: .bold, design: .default))
+//                            .font(Font.system(size: 20, weight: .bold, design: .default))
+                            .font(.custom("CircularStd-Bols", size: textSize20))
                             .padding(.top, 10)
                             .foregroundColor(.foregroundColorSchemeApp)
                         

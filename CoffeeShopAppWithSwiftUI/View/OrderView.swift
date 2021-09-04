@@ -30,7 +30,7 @@ struct OrderView: View {
             
             VStack(spacing: 0){
                 HStack{
-                    VTextSubtextView(textSize: 12, textWeight: .bold, subtextSize: 16, subtextWeight: .heavy, paddingActive: false)
+                    VTextSubtextView(textSize: 12, subtextSize: 16, paddingActive: false, heroFontWeightText: "Book")
                     Spacer()
                     NavLinkView(label: "Select Payment", isFixHeight: false, pathRouter: "/cart/order/pay")
                         .frame(width: 160, height: 50)

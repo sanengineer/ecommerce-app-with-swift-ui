@@ -55,6 +55,10 @@ class State: ObservableObject {
     @Published var fieldText = ""
     @Published var isfieldTextTapped = false
     @Published var isExpandNavBar = false
+    @Published var initTextMultilineTextField = ""
+    @Published var initHeightTextMultineTextField: CGFloat = 0
+    @Published var heightKeyboard: CGFloat = 0
+    @Published var bottomPaddingKeyboard: CGFloat = 0
     
     // MARK: - Route Path
     @Published var profile_detail_path: String = "/menu/profile_detail"

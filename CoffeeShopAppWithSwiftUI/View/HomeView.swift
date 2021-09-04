@@ -19,10 +19,10 @@ struct HomeView: View {
     @StateObject var state: State
     let nameAlias: String = "San"
     let categoryName = [
-        Category(name:"coffee", icon:"👋"),
-        Category(name:"tea", icon:"👋"),
-        Category(name:"matcha", icon:"👋"),
-        Category(name:"pastry", icon:"👋")
+        Category(name:"coffee", icon:"☕️"),
+        Category(name:"tea", icon:"🥃"),
+        Category(name:"matcha", icon:"🍵"),
+        Category(name:"pastry", icon:"🥐")
     ]
     let layout = [
         GridItem(GridItem.Size.adaptive(minimum: 120, maximum:300), spacing: 22, alignment: .none)
@@ -78,11 +78,16 @@ struct HomeView: View {
                                 
                                 HStack(alignment: .top){
                                     VStack(alignment: .leading, spacing: nil){
+//                                        Text("👋 Hai, \(nameAlias)")
+//                                            .font(Font.system(size: 32, weight: .bold, design: .default))
+//                                            .foregroundColor(Color.heroColorText)
+                                        
                                         Text("👋 Hai, \(nameAlias)")
-                                            .font(Font.system(size: 32, weight: .bold, design: .default))
+                                            .font(.custom("CircularStd-Bold", size: 32))
                                             .foregroundColor(Color.heroColorText)
                                         Text("Let's drink again!")
-                                            .font(Font.system(size: 18, weight: .regular, design: .default))
+//                                            .font(Font.system(size: 18, weight: .regular, design: .default))
+                                            .font(.custom("CircularStd-Bold", size: 18))
                                             .foregroundColor(Color.heroColorText)
                                     }
                                     Spacer()
@@ -91,10 +96,12 @@ struct HomeView: View {
                                 HStack(alignment: .top, spacing: nil) {
                                     VStack(alignment: .leading, spacing: nil){
                                         Text("Point")
-                                            .font(Font.system(size: 18, weight: .regular, design: .default))
+//                                            .font(Font.system(size: 18, weight: .regular, design: .default))
+                                            .font(.custom("CircularStd-Bold", size: 18))
                                             .foregroundColor(Color.heroColorText)
                                         Text("200.000")
-                                            .font(Font.system(size: 24, weight: .bold, design: .default))
+//                                            .font(Font.system(size: 24, weight: .bold, design: .default))
+                                            .font(.custom("CircularStd-Bold", size: 24))
                                             .foregroundColor(Color.heroColorText)
                                     }
                                     Spacer()
@@ -106,7 +113,8 @@ struct HomeView: View {
                                         HStack{
                                             Image(systemName: "shippingbox").foregroundColor(Color.heroColorText)
                                             Text("Home Address One")
-                                                .font(Font.system(size: 14, weight: .medium, design: .default))
+//                                                .font(Font.system(size: 14, weight: .medium, design: .default))
+                                                .font(.custom("CircularStd-Bold", size: 14))
                                                 .foregroundColor(Color.heroColorText)
                                         }
                                     }
@@ -141,14 +149,15 @@ struct HomeView: View {
                                                         HStack{
                                                             Text(categoryName[data].icon)
                                                             Text(categoryName[data].name)
-                                                                .font(Font.system(size: 16, weight: .medium, design: .default))
+//                                                                .font(Font.system(size: 16, weight: .medium, design: .default))
+                                                                .font(.custom("CircularStd-Medium", size: 14))
                                                                 .foregroundColor(.foregroundColorSchemeApp)
                                                             }
                                                             .frame(width: 120, height: 50, alignment: .center)
                                                             .overlay(
                                                                 RoundedRectangle(cornerRadius:10.0)
                                                                     .strokeBorder(lineWidth: 1.0, antialiased: true)
-                                                                    .foregroundColor(.gray).opacity(0.5)
+                                                                    .foregroundColor(.borderColorSchemeApp)
                                                                 )
                                                     }
                                                     

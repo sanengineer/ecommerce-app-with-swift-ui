@@ -32,9 +32,8 @@ struct CategoryView: View {
                 Spacer(minLength: 20)
                 LazyVGrid(columns:layout, spacing: 30){
                     ForEach(0..<8){ _ in
-                        NavLink(to: "/product/1") {
-                            CardImageTextButtonView()
-                        }
+                        CardImageTextButtonView(pathRouter: "/product/1")
+                        
                     }
                 }
                 .padding(.horizontal, 20)

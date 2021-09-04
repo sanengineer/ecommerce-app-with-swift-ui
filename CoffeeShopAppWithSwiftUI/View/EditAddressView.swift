@@ -12,6 +12,8 @@ struct EditAddressView: View {
     
     @StateObject var state: State
     
+    var textSize20 : CGFloat = 20
+    
     var body: some View {
         VStack(spacing:0){
             NavigationBar(navTitle: "", backgroundColor: .backgroundColorSchemeApp  , color: .foregroundColorSchemeApp, hiddenLeftBarButton: false, pathRouterLeftBar: "/profile/shipping")
@@ -19,7 +21,9 @@ struct EditAddressView: View {
             ScrollView(showsIndicators: false){
                 VStack(alignment: .leading, spacing: 50){
                     Text("Edit Address")
-                        .font(Font.system(size: 20, weight: .bold, design: .default))
+//                        .font(Font.system(size: textSize20, weight: .bold, design: .default))
+                        .font(.custom("CircularStd-Bold", size: textSize20))
+                        
                         .foregroundColor(.foregroundColorSchemeApp)
                     VStack(spacing: 50){
                         ForEach(0..<5){ _ in

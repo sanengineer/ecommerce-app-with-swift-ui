@@ -49,6 +49,10 @@ struct ProductRoute: View {
             Route(path: "/product/1") {
                 ProductDetailView(state: state)
             }
+            
+            Route(path: "/product/1/add_notes") {
+                NotesView(state: state)
+            }
         }
        
     }

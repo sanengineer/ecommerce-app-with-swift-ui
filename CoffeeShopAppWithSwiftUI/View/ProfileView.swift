@@ -14,6 +14,7 @@ struct ProfileView: View {
     
     @StateObject var state: State
   
+    var textSize16: CGFloat = 16
    
     
     var body: some View {
@@ -33,7 +34,7 @@ struct ProfileView: View {
                                 ForEach(0..<(self.state.profileCollection.count)){ item in
                                     let collection = state.profileCollection[item]
                                     
-                                    HNavLinkWithEmojiText(emoji: collection.icon , title: collection.title, caption: (collection.subtitle ?? ""), pathName: state.profileCollection[item].path, action: {})
+                                    HNavLinkWithEmojiText(emoji: collection.icon, title: collection.title, caption: (collection.subtitle ?? ""), pathName: state.profileCollection[item].path, textSize:16, action: {})
                                     
                                     if(item == state.profileCollection.distance(from: state.profileCollection.startIndex, to: state.profileCollection.endIndex - 3)) {
                                         Spacer(minLength: 40)
@@ -50,7 +51,8 @@ struct ProfileView: View {
                                     print("Button Logout")
                                 }, label: {
                                     Text("Logout")
-                                        .font(Font.system(size: 16, weight: .bold, design: .default))
+//                                        .font(Font.system(size: textSize16, weight: .bold, design: .default))
+                                        .font(.custom("CircularStd-Bold", size: textSize16))
                                         .foregroundColor(.red)
                                 })
                             }

@@ -12,6 +12,11 @@ struct ProductDetailView: View {
     
     @StateObject var state: State
     
+    var textSize: CGFloat = 16
+    var textSize14: CGFloat = 14
+    var textSize20: CGFloat = 20
+    var textSize18: CGFloat = 18
+    
     var body: some View {
         VStack(spacing:0){
             NavigationBar(navTitle:"Product Detail",backgroundColor: .backgroundColorSchemeApp, color: .foregroundColorSchemeApp, hiddenLeftBarButton: false, hiddenBorderBottom: false)
@@ -26,25 +31,30 @@ struct ProductDetailView: View {
                     VStack(alignment: .leading,spacing:20){
                         HStack(alignment: .center){
                             Text("Hallo")
-                                .font(Font.system(size: 16, weight: .heavy, design: .default))
+//                                .font(Font.system(size: textSize, weight: .heavy, design: .default))
+                                .font(.custom("CircularStd-Bold", size: textSize))
                             Image(systemName: "circle.fill")
                                 .font(Font.system(size: 8, weight: .bold, design: .default))
                             Text("250ml")
-                                .font(Font.system(size: 16, weight: .bold, design: .default))
+//                                .font(Font.system(size: textSize, weight: .bold, design: .default))
+                                .font(.custom("CircularStd-Book", size: textSize))
                             
                             Spacer()
                             Image(systemName: "heart")
                                 .font(Font.system(size: 24, weight: .medium, design: .default))
+                            
                         }
                         .padding(.top, 20)
                         
                         
                         Group{
                             Text("Hallo Hallo Hallo Hallo Hallo Hallo Hallo")
-                                .font(Font.system(size: 16, weight: .heavy, design: .default))
+//                                .font(Font.system(size: textSize, weight: .heavy, design: .default))
+                                .font(.custom("CircularStd-Bold", size: textSize))
                                 .lineLimit(2)
                             Text("Hallo Hallo Hallo Hallo Hallo Hallo HallHallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo")
-                                .font(Font.system(size: 16, weight: .medium, design: .default))
+//                                .font(Font.system(size: textSize, weight: .medium, design: .default))
+                                .font(.custom("CircularStd-Book", size: textSize))
                                 .lineLimit(6)
                         }
                         
@@ -58,7 +68,8 @@ struct ProductDetailView: View {
                 VStack(alignment: .trailing, spacing:20){
                     HStack{
                         Text("Hallo")
-                            .font(Font.system(size: 16, weight: .heavy, design: .default))
+//                            .font(Font.system(size: textSize, weight: .heavy, design: .default))
+                            .font(.custom("CircularStd-Bold", size: textSize))
                         Spacer()
                     }
                     
@@ -66,7 +77,8 @@ struct ProductDetailView: View {
                         HStack(spacing: 10){
                             ForEach(0..<3){ _ in
                                 Text("normal")
-                                    .font(Font.system(size: 14, weight: .medium, design: .default))
+//                                    .font(Font.system(size: textSize14, weight: .medium, design: .default))
+                                    .font(.custom("CircularStd-Book", size: textSize14))
                                     .frame(width:50)
                             }
                         }
@@ -77,7 +89,8 @@ struct ProductDetailView: View {
                         VStack(spacing:20){
                             HStack(alignment: .center, spacing: 0){
                                 Text("Sugar")
-                                    .font(Font.system(size: 16, weight: .heavy, design: .default))
+//                                    .font(Font.system(size: textSize, weight: .heavy, design: .default))
+                                    .font(.custom("CircularStd-Bold", size: textSize))
                                 Spacer(minLength: 10)
                                 
                                     RadioButton()
@@ -87,7 +100,8 @@ struct ProductDetailView: View {
                             }
                             HStack(spacing: 0){
                                 Text("Ice")
-                                    .font(Font.system(size: 16, weight: .heavy, design: .default))
+//                                    .font(Font.system(size: textSize, weight: .heavy, design: .default))
+                                    .font(.custom("CircularStd-Bold", size: textSize))
                                 Spacer(minLength: 10)
                                 
                                     RadioButton()
@@ -110,10 +124,14 @@ struct ProductDetailView: View {
                
                 VStack(spacing: 0){
                     HStack(spacing:0){
-                        Button(action: {}, label: {
+                        
+                        NavLink(to: "/product/1/add_notes") {
                             Text("Add Notes")
-                                .font(Font.system(size: 16, weight: .heavy, design: .default))
-                        })
+//                                .font(Font.system(size: 16, weight: .heavy, design: .default))
+                                .font(.custom("CircularStd-Bold", size: 16))
+                                .foregroundColor(.heroColor)
+                        }
+                        
                         Spacer()
                     }
                     
@@ -128,7 +146,8 @@ struct ProductDetailView: View {
                 VStack(spacing: 0){
                     HStack(spacing:30){
                         Text("Quantity")
-                          .font(Font.system(size: 16, weight: .heavy, design: .default))
+//                          .font(Font.system(size: textSize, weight: .heavy, design: .default))
+                            .font(.custom("CircularStd-Bold", size: textSize))
                         
                         HStack(spacing:0){
                             Button(action: {}, label: {
@@ -139,7 +158,8 @@ struct ProductDetailView: View {
                             Spacer(minLength: 2)
                             VStack{
                                 Text("99")
-                                    .font(Font.system(size: 20, weight: .bold, design: .default))
+//                                    .font(Font.system(size: textSize20, weight: .bold, design: .default))
+                                    .font(.custom("CircularStd-Bold", size: textSize18))
                                     .foregroundColor(.foregroundColorSchemeApp)
                                     .padding(.bottom, 6)
                             }
@@ -173,9 +193,10 @@ struct ProductDetailView: View {
                     NavLink(to: "/cart/order") {
                         HStack{
                             Text("⚡️")
-                            .font(Font.system(size: 20, weight: .medium, design: .default))
+                            .font(Font.system(size: textSize20, weight: .medium, design: .default))
                             Text("Fast Buy")
-                            .font(Font.system(size: 16, weight: .heavy, design: .default))
+//                            .font(Font.system(size: 16, weight: .heavy, design: .default))
+                            .font(.custom("CircularStd-Medium", size: textSize))
                             .foregroundColor(.foregroundColorSchemeApp)
                         }
                        
@@ -183,8 +204,9 @@ struct ProductDetailView: View {
                         .cornerRadius(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(lineWidth: 2)
-                                .foregroundColor(.foregroundColorSchemeApp)
+                                .stroke(lineWidth: 1)
+                                .foregroundColor(.heroColor)
+                                .opacity(0.5)
                         )
                         
                     }
@@ -195,17 +217,18 @@ struct ProductDetailView: View {
                     NavLink(to: "/cart/order") {
                         HStack{
                             Text("Add Cart")
-                            .font(Font.system(size: 16, weight: .heavy, design: .default))
+//                            .font(Font.system(size: textSize, weight: .heavy, design: .default))
+                                .font(.custom("CircularStd-Medium", size: textSize))
                             .foregroundColor(.foregroundColorSchemeApp)
                             Text("🛒")
-                            .font(Font.system(size: 20, weight: .medium, design: .default))
+                            .font(Font.system(size: textSize20, weight: .medium, design: .default))
                         }
                         .frame(width: 140, height: 50)
                         .cornerRadius(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(lineWidth: 2)
-                                .foregroundColor(.foregroundColorSchemeApp)
+                                .stroke(lineWidth: 1)
+                                .foregroundColor(.heroColor).opacity(0.5)
                         )
                     }
                     
