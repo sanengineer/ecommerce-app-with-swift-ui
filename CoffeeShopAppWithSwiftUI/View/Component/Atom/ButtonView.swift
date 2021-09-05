@@ -21,14 +21,12 @@ struct ButtonView: View {
     var cornerRadius: CGFloat = 10
     var borderWidth: CGFloat = 2
     var borderColor: Color = .heroColor
+    var action: () -> Void = {}
     
     var body: some View {
         
         GeometryReader{ proxy in
-            Button(action: {
-                print("Button Custom")
-               
-            }, label: {
+            Button(action: action, label: {
                 
                
                     Text(label)
@@ -59,11 +57,5 @@ struct ButtonView: View {
         
        
         
-    }
-}
-
-struct ButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-        ButtonView()
     }
 }

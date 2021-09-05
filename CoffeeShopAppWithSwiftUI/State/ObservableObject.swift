@@ -59,9 +59,9 @@ class State: ObservableObject {
     @Published var initHeightTextMultineTextField: CGFloat = 0
     @Published var heightKeyboard: CGFloat = 0
     @Published var bottomPaddingKeyboard: CGFloat = 0
-    @Published var showModalHome: Bool =  true
+    @Published var showModalHome: Bool =  false
     @Published var prevDragTranslationModal = CGSize.zero
-    @Published var currentHeightModalHomeSetupOrder: CGFloat = (UIScreen.screenHeight/UIScreen.screenWidth) == (16/9) ? 250 : 300
+    @Published var currentHeightModalHomeSetupOrder: CGFloat = (UIScreen.screenHeight/UIScreen.screenWidth) == (16/9) ? 250 : 280
     @Published var draggingModal = false
     @Published var defaultAddress: String = "Home Address One"
     // MARK: - Route Path

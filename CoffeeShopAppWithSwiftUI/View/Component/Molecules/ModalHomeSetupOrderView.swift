@@ -12,8 +12,8 @@ struct ModalHomeSetupOrderView: View {
     @Binding var isShowing:Bool
     @StateObject var state: State
     
-    let minHeight: CGFloat = (UIScreen.screenHeight/UIScreen.screenWidth) == (16/9) ? 280 : 300
-    let maxHeight: CGFloat = (UIScreen.screenHeight/UIScreen.screenWidth) == (16/9) ? 280 : 300
+    let minHeight: CGFloat = (UIScreen.screenHeight/UIScreen.screenWidth) == (16/9) ? 100 : 150
+    let maxHeight: CGFloat = (UIScreen.screenHeight/UIScreen.screenWidth) == (16/9) ? 280 : 280
     
     let startOpacity: Double = 0.4
     let endOpacity: Double = 0.8
@@ -31,7 +31,6 @@ struct ModalHomeSetupOrderView: View {
                     .onTapGesture {
                         self.isShowing = false
                     }
-                
                 modalContent
                 .transition(.move(edge: .bottom))
             }
@@ -42,23 +41,8 @@ struct ModalHomeSetupOrderView: View {
     }
     
     var modalContent: some View {
-        VStack(spacing:0){
-            VStack(spacing: 0){
-                VStack(spacing:0){
-                    Capsule()
-                        .foregroundColor(.foregroundColorSchemeApp)
-                        .opacity(0.5)
-                        .frame(width:80, height: 6)
-                        .padding(.top, 20)
-                        .padding(.bottom, 20)
-//                        .offset(x: 0, y: -10)
-                }
-                .frame(maxHeight: 40)
-                .frame(maxWidth: .infinity)
-                .background(Color.foregroundColorSchemeApp.opacity(0.00001))
-                .gesture(dragGesture)
-                .offset(x: 0, y: -10)
-                
+        ZStack(alignment: .top){
+            ZStack(alignment:.top){
                 VStack(alignment: .leading, spacing:20){
                     Button {
                         print("set home")
@@ -87,35 +71,41 @@ struct ModalHomeSetupOrderView: View {
                             Spacer()
                         }
                         .padding(.vertical, 10)
-                       
                     }
                     .foregroundColor(.foregroundColorSchemeApp)
                     
-                    ButtonView(backgroundColor: .backgroundColorSchemeApp, colorWhenOutlineStyle: .red, label: "Close", labelSize: 16, isOutlineStyle: true, borderWidth: 1, borderColor: .red)
+                    ButtonView(backgroundColor: .backgroundColorSchemeApp, colorWhenOutlineStyle: .red, label: "Close", labelSize: 16, isOutlineStyle: true, borderWidth: 1, borderColor: .red) {
+                        self.isShowing.toggle()
+                    }
                     
                    
                 }
                     .background(Color.backgroundColorSchemeApp)
             }
-            .padding(.top,10)
+            .padding(.top, 0)
             .padding(.horizontal, 20)
-            .padding(.bottom, state.aspectScreen == state.ratio ? 20 : 60)
-            .frame(maxWidth: UIScreen.screenWidth)
-//            .background(Color.green)
-        }
-        .background(
+            .padding(.bottom, 20)
+            .frame(maxWidth: .infinity)
+            .frame(minHeight:maxHeight ,maxHeight: .infinity)
+            .background(RoundedCornersSpecific(color: .backgroundColorSchemeApp,topRight: 30, bottomRight: 0, bottomLeft: 0, topLeft: 30))
+            
             ZStack(alignment: .bottom){
-                RoundedRectangle(cornerRadius: 20)
-                Rectangle()
-                    .frame(height: state.currentHeightModalHomeSetupOrder/2)
+                Capsule()
+                    .foregroundColor(.foregroundColorSchemeApp)
+                    .opacity(0.5)
+                    .frame(width:40, height: 6)
+                    .offset(x: 0, y: -8)
             }
-            .foregroundColor(.backgroundColorSchemeApp)
-        )
+            .frame(minHeight: 40, maxHeight: 40)
+            .frame(maxWidth: .infinity)
+            .background(RoundedCornersSpecific(color: .backgroundColorSchemeApp, topRight: 30, bottomRight: 0, bottomLeft: 0, topLeft: 30).opacity(0.00001))
+            .gesture(dragGesture)
+        }
         .frame(maxHeight: state.currentHeightModalHomeSetupOrder)
         .frame(maxWidth:.infinity)
         .animation(state.draggingModal ? nil : .easeInOut(duration: 0.25))
         .onDisappear{
-            state.currentHeightModalHomeSetupOrder = minHeight
+            state.currentHeightModalHomeSetupOrder = maxHeight
         }
     }
     
@@ -124,19 +114,22 @@ struct ModalHomeSetupOrderView: View {
     var dragGesture: some Gesture {
         DragGesture(minimumDistance: 0, coordinateSpace: .global)
             .onChanged { drag_gesture_value in
-                
                 let dragPoint = drag_gesture_value.translation.height - state.prevDragTranslationModal.height
+                
                 state.currentHeightModalHomeSetupOrder -= dragPoint
+                
                 state.prevDragTranslationModal = drag_gesture_value.translation
     
-                if (dragPoint + 100) > state.currentHeightModalHomeSetupOrder {
+                if state.currentHeightModalHomeSetupOrder > maxHeight {
+                    state.currentHeightModalHomeSetupOrder = maxHeight
+                } else if state.currentHeightModalHomeSetupOrder < minHeight {
                     self.isShowing = false
                 }
             }
             .onEnded { drag_gesture_value in
                 state.prevDragTranslationModal = .zero
                 state.draggingModal = false
-                state.currentHeightModalHomeSetupOrder = minHeight
+                state.currentHeightModalHomeSetupOrder = maxHeight
             }
     }
 }
