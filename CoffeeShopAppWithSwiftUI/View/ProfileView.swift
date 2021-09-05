@@ -19,7 +19,7 @@ struct ProfileView: View {
     
     var body: some View {
             VStack(spacing: 0){
-                NavigationBar(navTitle:"Profile", backgroundColor: Color.heroColor)
+                NavigationBar(navTitle:"Profile", backgroundColor: .backgroundColorSchemeApp, color: .foregroundColorSchemeApp, hiddenBorderBottom: false)
                 
                 VStack(spacing:0){
                     ScrollView(showsIndicators: false){

@@ -20,7 +20,7 @@ struct CardRoundedImageTextView: View {
                     
             HStack(){
                 VStack(alignment: .leading, spacing: 10){
-                Text("Coffee Double Shot Double Shot Double Shot - 250ml Coffee Double Shot Double Shot Double Shot - 250ml")
+                Text("Double Shoot Espresso Special With Palm Sugar")
 //                    .font(Font.system(size: 14, weight: .bold, design: .default))
                     .font(.custom("CircularStd-Book", size: 14))
                     .lineLimit(4)

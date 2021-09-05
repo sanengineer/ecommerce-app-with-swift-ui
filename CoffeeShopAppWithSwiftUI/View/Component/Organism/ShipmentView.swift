@@ -33,10 +33,10 @@ struct ShipmentView: View {
 
                             }
                             VStack(alignment: .leading,spacing:10){
-                                Text("Home")
+                                Text("Home Address One")
 //                                    .font(Font.system(size: 14, weight: .bold, design: .default))
                                     .font(.custom("CircularStd-Bold", size: textSize14))
-                                Text("Address Detail")
+                                Text("Espresso Street, No 20 Gotham, Middle Earth 15289")
 //                                    .font(Font.system(size: textSize14, weight: .regular, design: .default))
                                     .font(.custom("CircularStd-Book", size: textSize14))
                                     .lineLimit(3)
@@ -72,7 +72,7 @@ struct ShipmentView: View {
                         
                         VStack(spacing: 0){
                             HStack(alignment: .bottom){
-                                VTextSubtextView(textSize: 14, subtextSize: 12, paddingActive: false, heroFontWeightSubtext: "Book")
+                                VTextSubtextView(text:"Cart Resume", textSize: 14, subtext: "Total Price (6 Items)", subtextSize: 12, paddingActive: false, heroFontWeightSubtext: "Book")
                                 Spacer()
                                 Text("Rp 3.000.000")
 //                                    .font(Font.system(size: 16, weight: .heavy, design: .default))

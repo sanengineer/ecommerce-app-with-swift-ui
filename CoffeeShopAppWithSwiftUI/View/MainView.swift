@@ -15,30 +15,37 @@ struct MainView: View {
     var body: some View {
         
         VStack(spacing: -5){
-            
             ZStack{
-                switch state.tabCollection[state.selectionTab].tabName {
+                VStack(spacing: 0){
+                    ZStack{
+                        switch state.tabCollection[state.selectionTab].tabName {
 
-                case "Menu":
-                    MenuView(state: state)
+                        case "Menu":
+                            MenuView(state: state)
 
-                case "Cart":
-                     CartView()
+                        case "Cart":
+                             CartView()
 
-                case "Profile":
-                    ProfileView(state: state)
-                        .ignoresSafeArea(.all)
-                default :
-                    HomeView(state: state)
-                    .ignoresSafeArea(.all)
+                        case "Profile":
+                            ProfileView(state: state)
+                                .ignoresSafeArea(.all)
+                        default :
+                            HomeView(state: state)
+                            .ignoresSafeArea(.all)
+                        }
+                    }
+
+                    Spacer()
+                    
+                    TabBarView(state: state)
                 }
+                .if(state.showModalHome, transform: { view in
+                    view
+                        .blur(radius: 2)
+                })
+               
+                ModalHomeSetupOrderView(isShowing: $state.showModalHome, state: State())
             }
-
-            Spacer()
-            
-            TabBarView(state: state)
-//            TabBarViewWithRouter(state: state)
-          
         }
         .ignoresSafeArea(.all)
     }

@@ -9,9 +9,9 @@ import SwiftUI
 
 struct VCardImageTextSubTextButtonView: View {
     
-    var title: String = "Title"
-    var subtitle: String = "Subtitle Subtitle Subtitle Subtitle Subtitle"
-    var desc: String = "Description Description Description Description Description Description Description Description Description Description Description Description Description Description"
+    var title: String = "Rp. 30.000"
+    var subtitle: String = "Double Shoot Iced Shaken Espresso"
+    var desc: String = "Espresso based with 80% milk and 20% espresso coffee"
     var textSize20: CGFloat = 20
     var textSize18: CGFloat = 18
     var textSize14: CGFloat = 14

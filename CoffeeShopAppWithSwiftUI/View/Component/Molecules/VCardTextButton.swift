@@ -10,7 +10,7 @@ import SwiftUI
 struct VCardTextButton: View {
     
     var title: String = "Title"
-    var desc: String = "Description description description description description description description description description description description description description "
+    var desc: String = "Espresso Street, No 20 Gotham, Middle Earth 15289"
     var isDefault: Bool = true
     var color: Color = .foregroundColorSchemeApp
     var height: CGFloat = 250

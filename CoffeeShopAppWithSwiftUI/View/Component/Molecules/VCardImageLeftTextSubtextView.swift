@@ -26,11 +26,11 @@ struct VCardImageLeftTextSubtextView: View {
                     .cornerRadius(10.0)
                     Spacer(minLength: 20)
                     VStack(alignment: .leading,spacing:20){
-                        Text("Double Shot Shaken Double Shot Shaken")
+                        Text("Double Shoot Iced Shaken Espresso")
 //                            .font(Font.system(size: textSize14, weight: .heavy, design: .default))
                             .font(.custom("CircularStd-Bold", size: textSize14))
                             .lineLimit(2)
-                        Text("Double Shot Shaken Double Shot Shaken Double Shot Shaken Double Shot Shaken")
+                        Text("Espresso based with 80% milk and 20% espresso coffee")
                             .lineLimit(5)
 //                            .font(Font.system(size: textSize14, weight: .medium, design: .default))
                             .font(.custom("CircularStd-Medium", size: textSize14))

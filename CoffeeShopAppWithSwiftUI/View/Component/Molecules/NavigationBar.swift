@@ -41,11 +41,10 @@ struct NavigationBar: View {
                     }
                     
                     Text(navTitle)
-//                        .font(Font.system(size: titleSize, weight: .bold, design: .default))
                         .font(.custom("CircularStd-Medium", size: titleSize))
                         .foregroundColor(color)
                     Spacer()
-                    if hiddenRightBarButton == false{
+                    if hiddenRightBarButton == false {
                         NavLink(to: pathRouterRightBar) {
                             Image(systemName: iconName)  .font(Font.system(size: 20, weight: .medium, design: .default))
                                 .foregroundColor(color)
@@ -54,9 +53,7 @@ struct NavigationBar: View {
                     } else {
                         EmptyView()
                     }
-                   
                 }
-               
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 14)

@@ -30,7 +30,7 @@ struct ProductDetailView: View {
                     
                     VStack(alignment: .leading,spacing:20){
                         HStack(alignment: .center){
-                            Text("Hallo")
+                            Text("Rp. 29.900")
 //                                .font(Font.system(size: textSize, weight: .heavy, design: .default))
                                 .font(.custom("CircularStd-Bold", size: textSize))
                             Image(systemName: "circle.fill")
@@ -48,11 +48,11 @@ struct ProductDetailView: View {
                         
                         
                         Group{
-                            Text("Hallo Hallo Hallo Hallo Hallo Hallo Hallo")
+                            Text("Double Shoot Iced Shaken Espresso")
 //                                .font(Font.system(size: textSize, weight: .heavy, design: .default))
                                 .font(.custom("CircularStd-Bold", size: textSize))
                                 .lineLimit(2)
-                            Text("Hallo Hallo Hallo Hallo Hallo Hallo HallHallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo Hallo")
+                            Text("Espresso (20 gr), sugar (10 gr), ice (50 gr).")
 //                                .font(Font.system(size: textSize, weight: .medium, design: .default))
                                 .font(.custom("CircularStd-Book", size: textSize))
                                 .lineLimit(6)

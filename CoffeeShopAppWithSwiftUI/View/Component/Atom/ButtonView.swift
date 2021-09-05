@@ -11,6 +11,7 @@ struct ButtonView: View {
     
     var backgroundColor: Color = .heroColor
     var color: Color = .backgroundColorSchemeApp
+    var colorWhenOutlineStyle : Color = .heroColor
     var label: String = "Button"
     var labelSize: CGFloat = 16
     var height: CGFloat = 60
@@ -33,7 +34,7 @@ struct ButtonView: View {
                     Text(label)
 //                        .font(Font.system(size: labelSize, weight: .bold, design: .default))
                         .font(.custom("CircularStd-Medium", size: labelSize))
-                        .foregroundColor(isOutlineStyle == false ? color : .heroColor)
+                        .foregroundColor(isOutlineStyle == false ? color : colorWhenOutlineStyle)
                         .frame(
                             width: proxy.size.width ,
                             height: proxy.size.height,
