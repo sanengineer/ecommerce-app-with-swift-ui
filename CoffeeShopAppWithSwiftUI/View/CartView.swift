@@ -37,7 +37,7 @@ struct CartView: View {
             
             VStack(spacing: 0){
                 HStack{
-                    VTextSubtextView(text: "Total Price",subtext: "Rp 250.000", paddingActive: false,textSize14: 12, heroFontWeightText: "Book")
+                    VTextSubtextView(text: "Total Price",textSize: 12, subtext: "Rp 250.000", paddingActive: false, heroFontWeightText: "Book")
                     Spacer()
                     NavLinkView(label: "Buy", isFixHeight: false, pathRouter: "/cart/order")
                         .frame(width: 140, height: 50)

@@ -109,8 +109,6 @@ struct ModalHomeSetupOrderView: View {
         }
     }
     
-    
-    
     var dragGesture: some Gesture {
         DragGesture(minimumDistance: 0, coordinateSpace: .global)
             .onChanged { drag_gesture_value in

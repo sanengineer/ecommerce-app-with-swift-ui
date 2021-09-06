@@ -1,17 +1,16 @@
 //
-//  ModalSetDefaultAddress.swift
+//  ModalChangeProfilePictView.swift
 //  CoffeeShopAppWithSwiftUI
 //
-//  Created by San Engineer on 06/09/21.
+//  Created by San Engineer on 07/09/21.
 //
 
 import SwiftUI
 
-struct ModalSetDefaultAddress: View {
-    
-    @Binding var isShowing:Bool
+struct ModalChangeProfilePictView: View {
+    @Binding var isShowing: Bool
     @StateObject var state: State
-       
+    
     let minHeight: CGFloat = (UIScreen.screenHeight/UIScreen.screenWidth) == (16/9) ? 100 : 150
     let maxHeight: CGFloat = (UIScreen.screenHeight/UIScreen.screenWidth) == (16/9) ? 280 : 280
     
@@ -48,16 +47,12 @@ struct ModalSetDefaultAddress: View {
                         print("set home")
                     } label: {
                         HStack{
-                            Text("🔧").font(Font.system(size: 24))
+                            Image(systemName: "camera")
+                                .font(Font.system(size: 20, weight: .bold, design: .default))
                             HStack{
-                                Text("Set")
-                                    .font(.custom("CircularStd-Book", size: 16))
-                                Text("\(state.defaultAddress)mmmmmmmmmmmmmmmmmmmm")
-                                    .font(.custom("CircularStd-Bold", size: 16))
-                                Text("as default")
+                                Text("Take Photo")
                                     .font(.custom("CircularStd-Book", size: 16))
                             }
-                            .lineLimit(1)
                             Spacer()
                         }
                         .padding(.vertical, 10)
@@ -68,8 +63,9 @@ struct ModalSetDefaultAddress: View {
                         print("set pickup")
                     } label: {
                         HStack{
-                            Text("🚨").font(Font.system(size: 24))
-                            Text("Remove \(state.defaultAddress)")
+                            Image(systemName: "photo.fill.on.rectangle.fill")
+                                .font(Font.system(size: 20, weight: .bold, design: .default))
+                            Text("Choose from gallery")
                                     .font(.custom("CircularStd-Book", size: 16))
                             Spacer()
                         }
@@ -111,9 +107,7 @@ struct ModalSetDefaultAddress: View {
             state.currentHeightModalHomeSetupOrder = maxHeight
         }
     }
-    
-    
-    
+
     var dragGesture: some Gesture {
         DragGesture(minimumDistance: 0, coordinateSpace: .global)
             .onChanged { drag_gesture_value in
@@ -140,8 +134,8 @@ struct ModalSetDefaultAddress: View {
     }
 }
 
-struct ModalSetDefaultAddress_Previews: PreviewProvider {
+struct ModalChangeProfilePictView_Previews: PreviewProvider {
     static var previews: some View {
-        ModalSetDefaultAddress(isShowing: .constant(true), state: State())
+        ModalChangeProfilePictView(isShowing: .constant(true), state: State())
     }
 }

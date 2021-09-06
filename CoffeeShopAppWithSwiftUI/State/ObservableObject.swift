@@ -65,6 +65,7 @@ class State: ObservableObject {
     @Published var draggingModal = false
     @Published var defaultAddress: String = "Home Address One"
     @Published var showModalSetDefaultAddress: Bool = false
+    @Published var showModalEditProfilePict: Bool = false
     //MARK: - Cart
     @Published var shohModalDelteItemOnCart: Bool = false
     // MARK: - Route Path

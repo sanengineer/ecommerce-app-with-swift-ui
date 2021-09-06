@@ -18,7 +18,7 @@ struct VTextSubtextView: View {
     var hiddenButton: Bool = true
     var paddingActive: Bool = true
     var pathRouter: String = "home"
-    var textSize14: CGFloat = 14
+    var textButtonSize: CGFloat = 14
     var isHeroFontActive: Bool = true
     var heroFontWeightText: String = "Bold"
     var heroFontWeightSubtext: String = "Bold"
@@ -39,7 +39,7 @@ struct VTextSubtextView: View {
                 NavLink(to: pathRouter ){
                     Text("Edit")
 //                        .font(Font.system(size: textSize14, weight: .heavy, design: .default))
-                        .font(.custom("CircularStd-Medium", size: textSize14))
+                        .font(.custom("CircularStd-Medium", size: textButtonSize))
                         .foregroundColor(Color.darkLightColor)
                 }
             }

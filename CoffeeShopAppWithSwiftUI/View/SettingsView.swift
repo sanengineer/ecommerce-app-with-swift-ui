@@ -16,37 +16,30 @@ struct SettingsView: View {
         
         
         VStack(spacing: 0){
-            NavigationBar(navTitle: "Settings", hiddenLeftBarButton: false)
+            NavigationBar(navTitle: "Settings", backgroundColor: .backgroundColorSchemeApp, color: .foregroundColorSchemeApp,hiddenLeftBarButton: false, hiddenBorderBottom: false)
             
             
-            VStack{
-                    VStack{
-                        Text("halo")
-                    }
-                    
-                    VStack{
-                        Button {
-                            print("\(state.bool)")
-                            self.state.bool.toggle()
-                            
-                            UIApplication.shared.windows.first?.rootViewController?.view.overrideUserInterfaceStyle = self.state.bool ? .dark : .light
-//                            toggleTheme()
-//                            if state.bool{
-//                                self.state.labelThemeColor = "Light"
-//                                self.state.iconName = "sun.min"
-//                            } else {
-//                                self.state.iconName = "moon"
-//                                self.state.labelThemeColor = "Dark"
-//                            }
-                        } label: {
+            VStack(spacing: 0){
+                VStack(alignment: .leading, spacing:10){
+                        Text("Change Theme")
+                            .font(Font.custom("CircularStd-Bold", size: 16))
+                        Toggle(isOn: $state.bool) {
                             HStack(spacing:8){
-                                Image(systemName: state.iconName)
-                                Text("\(state.labelThemeColor)")
+                                Image(systemName: self.state.bool ?  "sun.min" : "moon" )
+                                    .font(Font.system(size: 20, weight: .medium, design: .default))
+                                Text("\(self.state.bool ? "Light" : "Dark")")
+                                    .font(Font.custom("CircularStd-Book", size: 16))
                             }
                         }
                     }
+                    .padding(.top, 40)
+                
+                
+                
+                
               
-            }  .background(Color.red)
+            }
+            .padding(.horizontal, 20)
            
            
             Spacer()

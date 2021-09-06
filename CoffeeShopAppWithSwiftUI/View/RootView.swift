@@ -36,6 +36,8 @@ struct RootView: View {
                 
                 ModalSetDefaultAddress(isShowing: $state.showModalSetDefaultAddress, state: state)
                 
+                ModalChangeProfilePictView(isShowing: $state.showModalEditProfilePict, state: state)
+                
                 
             }
             .preferredColorScheme(self.state.bool ? .dark : .light)
@@ -100,6 +102,10 @@ struct ProfileRoute: View {
     var body: some View {
         
         Group{
+            Route(path: "/profile/account_details") {
+                AccountDetailView(state: state)
+            }
+            
             Route(path: "/profile/biodata") {
                 ProfileDetailView()
             }

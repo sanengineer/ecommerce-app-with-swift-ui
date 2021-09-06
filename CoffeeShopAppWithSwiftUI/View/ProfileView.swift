@@ -26,9 +26,13 @@ struct ProfileView: View {
                         Spacer(minLength: 40)
 
                         VStack(spacing: 60) {
-                            VStack {
-                               ImageTextSubtext(title: "San Engineer", subtitle: "Profile, edit and more")
+                            NavLink(to: "/profile/account_details") {
+                                VStack {
+                                   ImageTextSubtext(title: "San Engineer", subtitle: "Profile, edit and more")
+                                }
                             }
+                            .foregroundColor(.foregroundColorSchemeApp)
+                           
                             
                             VStack(spacing: 20){
                                 ForEach(0..<(self.state.profileCollection.count)){ item in
