@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ShippingDetailView: View {
     
+    @StateObject var state: State
     var textSize20: CGFloat = 20
     
     var body: some View {
@@ -17,18 +18,21 @@ struct ShippingDetailView: View {
           
            
                 ScrollView(showsIndicators: false){
-                    Spacer(minLength: 40)
                     VStack(alignment: .leading ,spacing: 32){
                         Text("Addresses")
-//                            .font(Font.system(size: 20, weight: .bold, design: .default))
-                            .font(.custom("CircularStd-Bols", size: textSize20))
+                            .font(.custom("CircularStd-Bold", size: textSize20))
                             .padding(.top, 10)
                             .foregroundColor(.foregroundColorSchemeApp)
-                        
-                        VCardTextButton(pathRouter:"/profile/shipping/edit_address").frame(height: 240)
-                        VCardTextButton(pathRouter:"/profile/shipping/edit_address").frame(height: 240)
-                        VCardTextButton(pathRouter:"/profile/shipping/edit_address").frame(height: 240)
-                    }.padding(.horizontal, 20)
+                    
+                        VCardTextButton(pathRouter:"/profile/shipping/edit_address").frame(height: 200)
+                        VCardTextButton(pathRouter:"/profile/shipping/edit_address").frame(height: 200)
+                        VCardTextButton(pathRouter:"/profile/shipping/edit_address", actionSetDefaultAddress: {
+                            state.showModalSetDefaultAddress.toggle()
+                        }).frame(height: 200)
+                    }
+                    .padding(.top, 30)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 50)
                 }.background(Color.backgroundColorSchemeApp)
         }.ignoresSafeArea(edges: .all)
     }
@@ -36,6 +40,6 @@ struct ShippingDetailView: View {
 
 struct ShippingDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ShippingDetailView()
+        ShippingDetailView(state: State())
     }
 }

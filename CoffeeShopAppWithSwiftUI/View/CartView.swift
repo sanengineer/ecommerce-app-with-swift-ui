@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 struct CartView: View {
+    
+    @StateObject var state: State
+    
     var body: some View {
         VStack(spacing: 0){
           
@@ -21,7 +24,9 @@ struct CartView: View {
                         VStack(spacing: 0){
                             ForEach(0..<9){ item in
                                 VStack(spacing:0){
-                                    VCardImageTextSubTextButtonView()
+                                    VCardImageTextSubTextButtonView(actionButtonDelete:{
+                                        state.shohModalDelteItemOnCart.toggle()
+                                    })
                                 }.frame(height: 240)
                                 Divider()
                             }
@@ -50,6 +55,6 @@ struct CartView: View {
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
-        CartView()
+        CartView(state: State())
     }
 }

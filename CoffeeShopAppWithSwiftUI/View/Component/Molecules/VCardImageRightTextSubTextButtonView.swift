@@ -16,6 +16,7 @@ struct VCardImageTextSubTextButtonView: View {
     var textSize18: CGFloat = 18
     var textSize14: CGFloat = 14
     var textSize12: CGFloat = 12
+    var actionButtonDelete: () -> Void = {}
  
     var body: some View {
         GeometryReader{ proxy in
@@ -23,18 +24,15 @@ struct VCardImageTextSubTextButtonView: View {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 10){
                         Text(title)
-//                            .font(Font.system(size: textSize18, weight: .bold, design: .default))
                             .font(.custom("CircularStd-Bold", size: textSize18))
                             .foregroundColor(.foregroundColorSchemeApp)
                         
                         Text(subtitle)
-//                            .font(Font.system(size: textSize14, weight: .bold, design: .default))
                             .font(.custom("CircularStd-Bold", size: textSize14))
                             .foregroundColor(.foregroundColorSchemeApp)
                             .lineLimit(3)
                         
                         Text(desc)
-//                            .font(Font.system(size: textSize14, weight: .regular, design: .default))
                             .font(.custom("CircularStd-Book", size: textSize14))
                             .foregroundColor(.foregroundColorSchemeApp)
                             .lineLimit(3)
@@ -53,7 +51,7 @@ struct VCardImageTextSubTextButtonView: View {
                 
                 
                 HStack{
-                    Button(action: {}, label: {
+                    Button(action: actionButtonDelete, label: {
                         Image(systemName: "trash")
                             .font(Font.system(size: 24, weight: .medium, design: .default))
                             .foregroundColor(.foregroundColorSchemeApp)
@@ -69,7 +67,6 @@ struct VCardImageTextSubTextButtonView: View {
                         Spacer(minLength: 2)
                         VStack{
                             Text("99")
-//                                .font(Font.system(size: textSize18, weight: .bold, design: .default))
                                 .font(.custom("CircularStd-Bold", size: textSize18))
                                 .foregroundColor(.foregroundColorSchemeApp)
                                 .padding(.bottom, 6)

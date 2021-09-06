@@ -24,7 +24,7 @@ struct MainView: View {
                             MenuView(state: state)
 
                         case "Cart":
-                             CartView()
+                            CartView(state: state)
 
                         case "Profile":
                             ProfileView(state: state)
@@ -39,12 +39,13 @@ struct MainView: View {
                     
                     TabBarView(state: state)
                 }
-                .if(state.showModalHome, transform: { view in
+                .if(state.showModalHome || state.shohModalDelteItemOnCart, transform: { view in
                     view
                         .blur(radius: 2)
                 })
                
-                ModalHomeSetupOrderView(isShowing: $state.showModalHome, state: State())
+               
+                
             }
         }
         .ignoresSafeArea(.all)

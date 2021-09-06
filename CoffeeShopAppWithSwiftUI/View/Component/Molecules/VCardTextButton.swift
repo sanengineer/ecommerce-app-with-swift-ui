@@ -23,6 +23,8 @@ struct VCardTextButton: View {
     var textSize12: CGFloat = 12
     var textSize8: CGFloat = 8
     
+    var actionSetDefaultAddress: () -> Void = {}
+    
     var body: some View {
         GeometryReader{ proxy in
            
@@ -46,9 +48,7 @@ struct VCardTextButton: View {
                             }
                         }
                         Spacer()
-                        Button(action: {
-                            print("Button Modal Address")
-                        }, label: {
+                        Button(action: actionSetDefaultAddress, label: {
                             Image(systemName: "ellipsis")
                                 .font(Font.system(size: 20, weight: .bold, design: .default))
                                 .foregroundColor(color)

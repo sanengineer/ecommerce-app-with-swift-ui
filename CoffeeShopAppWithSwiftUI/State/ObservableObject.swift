@@ -64,6 +64,9 @@ class State: ObservableObject {
     @Published var currentHeightModalHomeSetupOrder: CGFloat = (UIScreen.screenHeight/UIScreen.screenWidth) == (16/9) ? 250 : 280
     @Published var draggingModal = false
     @Published var defaultAddress: String = "Home Address One"
+    @Published var showModalSetDefaultAddress: Bool = false
+    //MARK: - Cart
+    @Published var shohModalDelteItemOnCart: Bool = false
     // MARK: - Route Path
     @Published var profile_detail_path: String = "/menu/profile_detail"
 }

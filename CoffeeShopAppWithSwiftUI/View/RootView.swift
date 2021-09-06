@@ -30,9 +30,16 @@ struct RootView: View {
                 
                 ProfileRoute(state: state)
                 
+                ModalHomeSetupOrderView(isShowing: $state.showModalHome, state: state)
+                
+                ModalDeleteItemFromCartView(isShowing: $state.shohModalDelteItemOnCart)
+                
+                ModalSetDefaultAddress(isShowing: $state.showModalSetDefaultAddress, state: state)
+                
                 
             }
             .preferredColorScheme(self.state.bool ? .dark : .light)
+            .ignoresSafeArea(.all)
         }
     }
 }
@@ -102,7 +109,11 @@ struct ProfileRoute: View {
             }
             
             Route(path: "/profile/shipping") {
-                ShippingDetailView()
+                ShippingDetailView(state: state)
+                    .if(state.showModalSetDefaultAddress, transform: { view in
+                        view
+                            .blur(radius: 2)
+                    })
             }
             Route(path: "/profile/shipping/new_address") {
                 NewAddressView(state: state)
