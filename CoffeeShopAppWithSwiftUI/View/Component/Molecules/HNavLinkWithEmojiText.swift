@@ -21,24 +21,25 @@ struct HNavLinkWithEmojiText: View {
     var textSize16: CGFloat = 16
     var textSize: CGFloat = 14
     var captionSize: CGFloat = 14
-    var action: () -> Void
+    var action: () -> Void = {}
+    var showEmoji: Bool = true
     
    
     
     var body: some View {
         HStack(spacing: 20){
-            VStack{
-                Text(emoji) .font(Font.system(size: textSize20))
+            if showEmoji != false {
+                VStack{
+                    Text(emoji) .font(Font.system(size: textSize20))
+                }
             }
             
             VStack(alignment: .leading){
-                Text(title)
-//                    .font(Font.system(size: textSize14, weight: .medium, design: .default))
-                    .font(.custom("CircularStd-Bold", size: textSize))
+                    Text(title)
+                        .font(.custom("CircularStd-Bold", size: textSize))
                 
                 if enableCaption == true {
                     Text(caption)
-//                        .font(Font.system(size: textSize14, weight: .light, design: .default))
                         .font(.custom("CircularStd-Book", size: captionSize))
                 }
             }

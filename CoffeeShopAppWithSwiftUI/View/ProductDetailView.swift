@@ -31,12 +31,10 @@ struct ProductDetailView: View {
                     VStack(alignment: .leading,spacing:20){
                         HStack(alignment: .center){
                             Text("Rp. 29.900")
-//                                .font(Font.system(size: textSize, weight: .heavy, design: .default))
                                 .font(.custom("CircularStd-Bold", size: textSize))
                             Image(systemName: "circle.fill")
                                 .font(Font.system(size: 8, weight: .bold, design: .default))
                             Text("250ml")
-//                                .font(Font.system(size: textSize, weight: .bold, design: .default))
                                 .font(.custom("CircularStd-Book", size: textSize))
                             
                             Spacer()
@@ -49,11 +47,9 @@ struct ProductDetailView: View {
                         
                         Group{
                             Text("Double Shoot Iced Shaken Espresso")
-//                                .font(Font.system(size: textSize, weight: .heavy, design: .default))
                                 .font(.custom("CircularStd-Bold", size: textSize))
                                 .lineLimit(2)
                             Text("Espresso (20 gr), sugar (10 gr), ice (50 gr).")
-//                                .font(Font.system(size: textSize, weight: .medium, design: .default))
                                 .font(.custom("CircularStd-Book", size: textSize))
                                 .lineLimit(6)
                         }
@@ -68,7 +64,6 @@ struct ProductDetailView: View {
                 VStack(alignment: .trailing, spacing:20){
                     HStack{
                         Text("Hallo")
-//                            .font(Font.system(size: textSize, weight: .heavy, design: .default))
                             .font(.custom("CircularStd-Bold", size: textSize))
                         Spacer()
                     }
@@ -77,7 +72,6 @@ struct ProductDetailView: View {
                         HStack(spacing: 10){
                             ForEach(0..<3){ _ in
                                 Text("normal")
-//                                    .font(Font.system(size: textSize14, weight: .medium, design: .default))
                                     .font(.custom("CircularStd-Book", size: textSize14))
                                     .frame(width:50)
                             }
@@ -89,7 +83,6 @@ struct ProductDetailView: View {
                         VStack(spacing:20){
                             HStack(alignment: .center, spacing: 0){
                                 Text("Sugar")
-//                                    .font(Font.system(size: textSize, weight: .heavy, design: .default))
                                     .font(.custom("CircularStd-Bold", size: textSize))
                                 Spacer(minLength: 10)
                                 
@@ -100,7 +93,6 @@ struct ProductDetailView: View {
                             }
                             HStack(spacing: 0){
                                 Text("Ice")
-//                                    .font(Font.system(size: textSize, weight: .heavy, design: .default))
                                     .font(.custom("CircularStd-Bold", size: textSize))
                                 Spacer(minLength: 10)
                                 
@@ -127,7 +119,6 @@ struct ProductDetailView: View {
                         
                         NavLink(to: "/product/1/add_notes") {
                             Text("Add Notes")
-//                                .font(Font.system(size: 16, weight: .heavy, design: .default))
                                 .font(.custom("CircularStd-Bold", size: 16))
                                 .foregroundColor(.heroColor)
                         }
@@ -146,7 +137,6 @@ struct ProductDetailView: View {
                 VStack(spacing: 0){
                     HStack(spacing:30){
                         Text("Quantity")
-//                          .font(Font.system(size: textSize, weight: .heavy, design: .default))
                             .font(.custom("CircularStd-Bold", size: textSize))
                         
                         HStack(spacing:0){
@@ -158,7 +148,6 @@ struct ProductDetailView: View {
                             Spacer(minLength: 2)
                             VStack{
                                 Text("99")
-//                                    .font(Font.system(size: textSize20, weight: .bold, design: .default))
                                     .font(.custom("CircularStd-Bold", size: textSize18))
                                     .foregroundColor(.foregroundColorSchemeApp)
                                     .padding(.bottom, 6)
@@ -195,7 +184,6 @@ struct ProductDetailView: View {
                             Text("⚡️")
                             .font(Font.system(size: textSize20, weight: .medium, design: .default))
                             Text("Fast Buy")
-//                            .font(Font.system(size: 16, weight: .heavy, design: .default))
                             .font(.custom("CircularStd-Medium", size: textSize))
                             .foregroundColor(.foregroundColorSchemeApp)
                         }
@@ -217,7 +205,6 @@ struct ProductDetailView: View {
                     NavLink(to: "/cart/order") {
                         HStack{
                             Text("Add Cart")
-//                            .font(Font.system(size: textSize, weight: .heavy, design: .default))
                                 .font(.custom("CircularStd-Medium", size: textSize))
                             .foregroundColor(.foregroundColorSchemeApp)
                             Text("🛒")

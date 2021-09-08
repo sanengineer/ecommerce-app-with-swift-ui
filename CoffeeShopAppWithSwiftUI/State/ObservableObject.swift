@@ -66,6 +66,10 @@ class State: ObservableObject {
     @Published var defaultAddress: String = "Home Address One"
     @Published var showModalSetDefaultAddress: Bool = false
     @Published var showModalEditProfilePict: Bool = false
+    @Published var pinScreen: String = ""
+    @Published var isLockScreen: Bool = false
+    @Published var wrongPinScreen: Bool = false
+    
     //MARK: - Cart
     @Published var shohModalDelteItemOnCart: Bool = false
     // MARK: - Route Path

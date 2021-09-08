@@ -22,6 +22,7 @@ struct NavigationBar: View {
     var hiddenRightBarButton: Bool = true
     var pathRouterLeftBar: String = "home"
     var pathRouterRightBar: String = "home"
+    var showTitle: Bool = true
     
     var body: some View {
         VStack(alignment: .leading){
@@ -40,9 +41,16 @@ struct NavigationBar: View {
                         EmptyView()
                     }
                     
-                    Text(navTitle)
-                        .font(.custom("CircularStd-Medium", size: titleSize))
-                        .foregroundColor(color)
+                    if showTitle == false && hiddenRightBarButton == true {
+                        Text("Halo")
+                            .font(.custom("CircularStd-Medium", size: titleSize))
+                            .foregroundColor(.backgroundColorSchemeApp)
+                    } else {
+                        Text(navTitle)
+                            .font(.custom("CircularStd-Medium", size: titleSize))
+                            .foregroundColor(color)
+                    }
+                   
                     Spacer()
                     if hiddenRightBarButton == false {
                         NavLink(to: pathRouterRightBar) {

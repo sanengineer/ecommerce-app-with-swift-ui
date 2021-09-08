@@ -114,6 +114,18 @@ struct ProfileRoute: View {
                 EditProfileView()
             }
             
+            Route(path: "/profile/security") {
+                SecurityView()
+            }
+            
+            Route(path: "/profile/security/pin_screen") {
+                PinScreenView()
+            }
+            
+            Route(path: "/profile/security/pin_screen/new_pin") {
+                CreateNewPinView(state: state, unlockScreen: $state.isLockScreen)
+            }
+            
             Route(path: "/profile/shipping") {
                 ShippingDetailView(state: state)
                     .if(state.showModalSetDefaultAddress, transform: { view in
