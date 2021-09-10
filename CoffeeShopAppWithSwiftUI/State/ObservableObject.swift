@@ -67,11 +67,30 @@ class State: ObservableObject {
     @Published var showModalSetDefaultAddress: Bool = false
     @Published var showModalEditProfilePict: Bool = false
     @Published var pinScreen: String = ""
-    @Published var isLockScreen: Bool = false
+    @Published var isLockScreen: Bool = true
     @Published var wrongPinScreen: Bool = false
+    @Published var remaining = 1.0
+    @Published var appearWrong:Bool = false
+    @Published var key_pin_storage: String = ""
     
     //MARK: - Cart
     @Published var shohModalDelteItemOnCart: Bool = false
     // MARK: - Route Path
     @Published var profile_detail_path: String = "/menu/profile_detail"
+    // MARK: - Func
+    let defaults = UserDefaults.standard
+    let _forKey = "PinScreenApp"
+    
+    func setPin() {
+        defaults.set(pinScreen, forKey: _forKey)
+    }
+    
+    func getPin() -> String {
+        guard let data = defaults.value(forKey: _forKey) else {
+            return ""
+        }
+        
+        return data as! String
+    }
+    
 }

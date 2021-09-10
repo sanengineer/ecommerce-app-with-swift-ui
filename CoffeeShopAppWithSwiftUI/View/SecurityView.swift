@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SecurityView: View {
+    
     var body: some View {
         VStack(spacing: 0){
             NavigationBar(navTitle: "Security", backgroundColor: .backgroundColorSchemeApp, color: .foregroundColorSchemeApp, hiddenLeftBarButton: false,hiddenBorderBottom: false, pathRouterLeftBar: "/profile")
@@ -19,6 +20,7 @@ struct SecurityView: View {
             }
             .padding(.top, 40)
             .padding(.horizontal, 20)
+            
             
             Spacer()
         }

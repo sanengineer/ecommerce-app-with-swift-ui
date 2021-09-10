@@ -13,36 +13,42 @@ struct RootView: View {
     @StateObject var state: State
     
     var body: some View {
-        
-        Router {
-            ZStack(alignment: .center){
-                MainView(state: state)
-                
-                ProductRoute(state: state)
-                
-                Route(path: "/category") {
-                    CategoryView()
+            Router {
+                ZStack(alignment: .center){
+                        Group{
+                            MainView(state: state)
+                            
+                            ProductRoute(state: state)
+                            
+                            Route(path: "/category") {
+                                CategoryView()
+                            }
+                            
+                            MenuRoute(state: state)
+                            
+                            CartRoute(state: state)
+                            
+                            ProfileRoute(state: state)
+                            
+                            ModalHomeSetupOrderView(isShowing: $state.showModalHome, state: state)
+                            
+                            ModalDeleteItemFromCartView(isShowing: $state.shohModalDelteItemOnCart)
+                            
+                            ModalSetDefaultAddress(isShowing: $state.showModalSetDefaultAddress, state: state)
+                            
+                            ModalChangeProfilePictView(isShowing: $state.showModalEditProfilePict, state: state)
+                           
+                        }
+                    
+                    PinScreenAppView(state: state, locked: $state.isLockScreen)
+                    
+                    
+                    
                 }
-                
-                MenuRoute(state: state)
-                
-                CartRoute(state: state)
-                
-                ProfileRoute(state: state)
-                
-                ModalHomeSetupOrderView(isShowing: $state.showModalHome, state: state)
-                
-                ModalDeleteItemFromCartView(isShowing: $state.shohModalDelteItemOnCart)
-                
-                ModalSetDefaultAddress(isShowing: $state.showModalSetDefaultAddress, state: state)
-                
-                ModalChangeProfilePictView(isShowing: $state.showModalEditProfilePict, state: state)
-                
-                
+                .preferredColorScheme(self.state.bool ? .dark : .light)
+                .ignoresSafeArea(.all)
             }
-            .preferredColorScheme(self.state.bool ? .dark : .light)
-            .ignoresSafeArea(.all)
-        }
+       
     }
 }
 

@@ -12,8 +12,7 @@ struct CreateNewPinView: View {
     @StateObject var state: State
     @AppStorage("pin_screen") var key_pin_storage = "2222"
     @Binding var unlockScreen: Bool
-    @SwiftUI.State var remaining = 1.0
-    @SwiftUI.State var appearWrong:Bool = false
+ 
     var timer = Timer.publish(every: 1.0, on: .current, in: .default).autoconnect()
     
     var body: some View {
@@ -51,16 +50,16 @@ struct CreateNewPinView: View {
                                            
                                             .onReceive(timer) { _ in
                                     
-                                                print("\(remaining)")
-                                                    self.remaining -= 1.0
+                                                print("\(state.remaining)")
+                                                self.state.remaining -= 1.0
                                                 
-                                                 if self.remaining == -1.0 {
-                                                    self.remaining = 1.0
+                                                if self.state.remaining == -1.0 {
+                                                    self.state.remaining = 1.0
                                                     stopTimer()
                                                 }
                                                 
                                                 
-                                                if appearWrong == true {
+                                                if state.appearWrong == true {
                                                     print(true)
                                                 } else {
                                                     print(false)
@@ -89,7 +88,11 @@ struct CreateNewPinView: View {
                        
                     }
                     .onAppear {
-                        if appearWrong == true {
+                        let __data = state.getPin()
+
+                        print("\(__data)")
+                        
+                        if state.appearWrong == true {
                             print(true)
                         } else {
                             print(false)
@@ -105,12 +108,12 @@ struct CreateNewPinView: View {
                     
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 40){
                         ForEach(1...9, id:\.self){ index in
-                            KeyPadPinScreen(value: "\(index)", pin: $state.pinScreen, key_pin_storage: $key_pin_storage, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $appearWrong)
+                            KeyPadPinScreen(value: "\(index)", pin: $state.pinScreen, key_pin_storage: $key_pin_storage, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $state.appearWrong, state: state)
                         }
                         
-                        KeyPadPinScreen(value: "delete.fill", pin: $state.pinScreen, key_pin_storage: $key_pin_storage, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $appearWrong)
+                        KeyPadPinScreen(value: "delete.fill", pin: $state.pinScreen, key_pin_storage: $key_pin_storage, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $state.appearWrong, state: state)
                         
-                        KeyPadPinScreen(value: "0", pin: $state.pinScreen, key_pin_storage: $key_pin_storage, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $appearWrong)
+                        KeyPadPinScreen(value: "0", pin: $state.pinScreen, key_pin_storage: $key_pin_storage, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $state.appearWrong, state: state)
                     }
                     
                 }
@@ -160,16 +163,6 @@ struct CirclePinScreen: View {
                         .frame(width: 14, height: 14)
                         
                 }
-            
-//            Circle()
-//                .stroke(Color.red, lineWidth: 2)
-//                .frame(width:26, height: 26)
-//
-//            if pinScreen.count > index {
-//                Circle()
-//                    .fill(Color.blue)
-//                    .frame(width:26, height: 26)
-//            }
                 
             }
         .transition(.scale(scale: 0, anchor: .center))
@@ -186,6 +179,7 @@ struct KeyPadPinScreen: View {
     @Binding var unlockPinScreen: Bool
     @Binding var wrongPinScreen: Bool
     @Binding var timingBool: Bool
+    @StateObject var state: State
     
     var body: some View {
       
@@ -222,13 +216,15 @@ struct KeyPadPinScreen: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         withAnimation {
                             if pin.count == 4 {
-                                if pin == key_pin_storage {
-                                    unlockPinScreen.toggle()
-                                } else {
-                                    wrongPinScreen = true
-                                    timingBool = true
-                                    pin.removeAll()
-                                }
+                                state.setPin()
+                                
+//                                if pin == key_pin_storage {
+//                                    unlockPinScreen.toggle()
+//                                } else {
+//                                    wrongPinScreen = true
+//                                    timingBool = true
+//                                    pin.removeAll()
+//                                }
                             }
                         }
                     }

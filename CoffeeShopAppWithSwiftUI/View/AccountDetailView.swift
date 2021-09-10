@@ -78,8 +78,3 @@ struct AccountDetailView: View {
     }
 }
 
-struct AccountDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountDetailView(state: State())
-    }
-}

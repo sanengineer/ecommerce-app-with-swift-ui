@@ -9,18 +9,17 @@ import SwiftUI
 
 
 struct ContentView: View {
-    
+
+    @StateObject var state : State
 
     var body: some View {
-  
         RootView(state: State())
-       
     }
     
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(state: State())
     }
 }
