@@ -40,7 +40,12 @@ struct RootView: View {
                            
                         }
                     
-                    PinScreenAppView(state: state, locked: $state.isLockScreen)
+                    if state.statusActivatePinScreenNow == true {
+                        PinScreenAppView(state: state, locked: $state.isLockScreen)
+                    } else {
+                        EmptyView()
+                    }
+                   
                     
                     
                     
@@ -125,7 +130,7 @@ struct ProfileRoute: View {
             }
             
             Route(path: "/profile/security/pin_screen") {
-                PinScreenView()
+                PinScreenView(state: state)
             }
             
             Route(path: "/profile/security/pin_screen/new_pin") {

@@ -72,14 +72,30 @@ class State: ObservableObject {
     @Published var remaining = 1.0
     @Published var appearWrong:Bool = false
     @Published var key_pin_storage: String = ""
+    @Published var activatePinScreen: Bool = false
+  
     
     //MARK: - Cart
     @Published var shohModalDelteItemOnCart: Bool = false
     // MARK: - Route Path
     @Published var profile_detail_path: String = "/menu/profile_detail"
     // MARK: - Func
-    let defaults = UserDefaults.standard
-    let _forKey = "PinScreenApp"
+    var defaults = UserDefaults.standard
+    var _forKey = "PinScreenApp"
+    
+    var _forKeyActivatePinScreenApp = "ActivatePinScreenApp"
+    
+    func setActivatePin() {
+        defaults.set(activatePinScreen, forKey: _forKeyActivatePinScreenApp)
+    }
+    
+    func getActivatePin() -> Bool {
+        let data = defaults.bool(forKey: _forKeyActivatePinScreenApp) 
+        
+        return data
+    }
+    
+    @Published var statusActivatePinScreenNow : Bool = UserDefaults.standard.bool(forKey: "ActivatePinScreenApp")
     
     func setPin() {
         defaults.set(pinScreen, forKey: _forKey)
