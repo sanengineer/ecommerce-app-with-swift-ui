@@ -67,12 +67,19 @@ class State: ObservableObject {
     @Published var showModalSetDefaultAddress: Bool = false
     @Published var showModalEditProfilePict: Bool = false
     @Published var pinScreen: String = ""
+    @Published var pinScreenOnBoard: String = ""
     @Published var isLockScreen: Bool = true
     @Published var wrongPinScreen: Bool = false
     @Published var remaining = 1.0
     @Published var appearWrong:Bool = false
     @Published var key_pin_storage: String = ""
     @Published var activatePinScreen: Bool = false
+    @Published var isForwardToCreateNewPin: Bool = false
+    @Published var newPinScreenApp: String = ""
+    @Published var verifiedNewPinScreenApp: String = ""
+    @Published var isForwardVerifiedNewPin: Bool = false
+    @Published var successChangePin: Bool = false
+    
   
     
     //MARK: - Cart
@@ -96,6 +103,8 @@ class State: ObservableObject {
     }
     
     @Published var statusActivatePinScreenNow : Bool = UserDefaults.standard.bool(forKey: "ActivatePinScreenApp")
+    
+    @Published var isPinAvailable: String? = UserDefaults.standard.value(forKey: "PinScreenApp") as? String
     
     func setPin() {
         defaults.set(pinScreen, forKey: _forKey)

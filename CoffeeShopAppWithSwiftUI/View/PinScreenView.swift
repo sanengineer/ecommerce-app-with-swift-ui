@@ -16,7 +16,7 @@ struct PinScreenView: View {
             
             VStack(spacing:20){
                 
-                HNavLinkWithEmojiText(title: "Create New Pin", pathName: "/profile/security/pin_screen/new_pin", enableCaption: false, isPaddingActive: false, showEmoji: false)
+                HNavLinkWithEmojiText(title: state.isPinAvailable != nil ? "Change Pin" : "Create New Pin", pathName: state.isPinAvailable != nil ? "/profile/security/pin_screen/change_pin" : "/profile/security/pin_screen/new_pin", enableCaption: false, isPaddingActive: false, showEmoji: false)
                 
                 VStack(alignment: .leading, spacing:10){
                         Text("Activate Pin")

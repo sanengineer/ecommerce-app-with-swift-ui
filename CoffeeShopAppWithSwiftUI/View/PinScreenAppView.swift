@@ -31,7 +31,7 @@ struct PinScreenAppView: View {
                             
                             HStack(spacing: 20){
                                 ForEach(0..<4, id:\.self){ index in
-                                    CirclePinScreen(index: index, pinScreen: $state.pinScreen)
+                                    CirclePinScreenOnBoard(index: index, pinScreen: $state.pinScreenOnBoard)
                                 }
                             }
                             VStack{
@@ -43,9 +43,8 @@ struct PinScreenAppView: View {
                                         .opacity(self.state.wrongPinScreen ? 1.0 : 0.0)
                                         .if(self.state.wrongPinScreen == true, transform: { view in
                                             view
-                                               
                                                 .onReceive(timer) { _ in
-                                        
+                                                    
                                                     print("\(remaining)")
                                                         self.remaining -= 1.0
                                                     
@@ -66,8 +65,6 @@ struct PinScreenAppView: View {
                                                     } else {
                                                         print("WRONG PRINT SCREEN: \(false)")
                                                     }
-                                                    
-                                                    
                                                 }
                                                
                                         })
@@ -95,6 +92,13 @@ struct PinScreenAppView: View {
                             } else {
                                 print("WRONG PRINT SCREEN: \(false)")
                             }
+                            
+                            if state.isPinAvailable != nil {
+                                print("check bool:")
+                                print(true)
+                            }
+                            
+//                            print("Check", state.isPinAvailable)
                         }
                         
                         
@@ -104,15 +108,16 @@ struct PinScreenAppView: View {
                             ForEach(1...9, id:\.self){ index in
                                
                                 
-                                KeyPadPinScreenOnBoard(value: "\(index)", pin: $state.pinScreen, key_pin_storage: $state.key_pin_storage, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $appearWrong, state: state, closeScreen: $locked)
+                                KeyPadPinScreenOnBoard(value: "\(index)", pin: $state.pinScreenOnBoard, key_pin_storage: $state.key_pin_storage, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $appearWrong, state: state, closeScreen: $locked)
                             }
                             
-                            KeyPadPinScreenOnBoard(value: "delete.fill", pin: $state.pinScreen, key_pin_storage: $state.key_pin_storage, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $appearWrong, state: state, closeScreen: $locked)
+                            KeyPadPinScreenOnBoard(value: "delete.fill", pin: $state.pinScreenOnBoard, key_pin_storage: $state.key_pin_storage, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $appearWrong, state: state, closeScreen: $locked)
                             
-                            KeyPadPinScreenOnBoard(value: "0", pin: $state.pinScreen, key_pin_storage: $state.key_pin_storage, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $appearWrong, state: state, closeScreen: $locked)
+                            KeyPadPinScreenOnBoard(value: "0", pin: $state.pinScreenOnBoard, key_pin_storage: $state.key_pin_storage, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $appearWrong, state: state, closeScreen: $locked)
                         }
                         .onAppear{
                             self.state.key_pin_storage = state.getPin()
+                          
                         }
                         
                     }
@@ -140,6 +145,36 @@ struct PinScreenAppView: View {
     func stopTimer(){
         timer.upstream.connect().cancel()
         state.wrongPinScreen = false
+    }
+}
+
+struct CirclePinScreenOnBoard: View {
+    var index: Int
+    @Binding var pinScreen: String
+    
+    var body: some View {
+      
+        ZStack(alignment:.center){
+                Circle()
+                    .fill(Color.foregroundColorSchemeApp)
+                    .frame(width: 16, height: 16)
+                Circle()
+                    .fill(Color.backgroundColorSchemeApp)
+                    .frame(width: 14, height: 14)
+                
+                if pinScreen.count > index {
+                    Circle()
+                        .fill(Color.foregroundColorSchemeApp)
+                        .frame(width: 14, height: 14)
+                        
+                }
+                
+            }
+        .onAppear{
+            print("Check", pinScreen.count, "index:", index)
+        }
+        .transition(.scale(scale: 0, anchor: .center))
+         
     }
 }
 
@@ -171,7 +206,6 @@ struct KeyPadPinScreenOnBoard: View {
                             .foregroundColor(.foregroundColorSchemeApp)
                     }
                 }
-//                .padding()
                 
             }
     }
@@ -189,14 +223,18 @@ struct KeyPadPinScreenOnBoard: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         withAnimation {
                             if pin.count == 4 {
-                                if pin == key_pin_storage {
-                                    unlockPinScreen.toggle()
-                                    closeScreen = false
-                                } else {
-                                    wrongPinScreen = true
-                                    timingBool = true
-                                    pin.removeAll()
-                                }
+//                                if state.isPinAvailable == nil {
+                                    if pin == key_pin_storage {
+                                        unlockPinScreen.toggle()
+                                        closeScreen = false
+                                    } else {
+                                        wrongPinScreen = true
+                                        timingBool = true
+                                        pin.removeAll()
+                                    }
+//                                } else {
+//                                    pin.removeAll()
+//                                }
                             }
                         }
                     }

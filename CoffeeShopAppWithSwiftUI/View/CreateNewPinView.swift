@@ -30,8 +30,11 @@ struct CreateNewPinView: View {
                 
                 VStack(spacing: UIScreen.screenHeight / 11){
                     VStack(spacing: UIScreen.screenHeight / 11){
+                        
+                  
                         Text("Enter Your Pin")
                             .font(Font.custom("CircularStd-Bold", size: 18))
+                        
                         
                         HStack(spacing: 20){
                             ForEach(0..<4, id:\.self){ index in
@@ -165,6 +168,9 @@ struct CirclePinScreen: View {
                 }
                 
             }
+        .onAppear{
+            print("Check", pinScreen.count, "index:", index)
+        }
         .transition(.scale(scale: 0, anchor: .center))
          
     }
@@ -215,8 +221,18 @@ struct KeyPadPinScreen: View {
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         withAnimation {
+//
+//                            if state.isPinAvailable != nil {
+//                                pin.removeAll()
+//                            }
+                            
                             if pin.count == 4 {
-                                state.setPin()
+                                
+//                                if state.isPinAvailable != nil {
+                                    pin.removeAll()
+//                                }
+//                                pin.removeAll()
+//                                state.setPin()
                                 
 //                                if pin == key_pin_storage {
 //                                    unlockPinScreen.toggle()

@@ -30,13 +30,7 @@ struct RootView: View {
                             
                             ProfileRoute(state: state)
                             
-                            ModalHomeSetupOrderView(isShowing: $state.showModalHome, state: state)
-                            
-                            ModalDeleteItemFromCartView(isShowing: $state.shohModalDelteItemOnCart)
-                            
-                            ModalSetDefaultAddress(isShowing: $state.showModalSetDefaultAddress, state: state)
-                            
-                            ModalChangeProfilePictView(isShowing: $state.showModalEditProfilePict, state: state)
+                            modal
                            
                         }
                     
@@ -46,13 +40,26 @@ struct RootView: View {
                         EmptyView()
                     }
                    
-                    
-                    
-                    
                 }
                 .preferredColorScheme(self.state.bool ? .dark : .light)
                 .ignoresSafeArea(.all)
             }
+       
+    }
+    
+    var modal: some View {
+        
+        Group {
+            ModalHomeSetupOrderView(isShowing: $state.showModalHome, state: state)
+            
+            ModalDeleteItemFromCartView(isShowing: $state.shohModalDelteItemOnCart)
+            
+            ModalSetDefaultAddress(isShowing: $state.showModalSetDefaultAddress, state: state)
+            
+            ModalChangeProfilePictView(isShowing: $state.showModalEditProfilePict, state: state)
+            
+            SuccessChangePinView(isVerified: $state.successChangePin, isDarkScheme: $state.bool)
+        }
        
     }
 }
@@ -117,6 +124,18 @@ struct ProfileRoute: View {
                 AccountDetailView(state: state)
             }
             
+            biodata_view
+            security_view
+            shipping_view
+            
+            Route(path: "/profile/settings") {
+                SettingsView(state: state)
+            }
+        }
+    }
+    
+    var biodata_view: some View {
+        Group {
             Route(path: "/profile/biodata") {
                 ProfileDetailView()
             }
@@ -124,7 +143,11 @@ struct ProfileRoute: View {
             Route(path: "/profile/biodata/edit") {
                 EditProfileView()
             }
-            
+        }
+    }
+    
+    var security_view : some View {
+        Group {
             Route(path: "/profile/security") {
                 SecurityView()
             }
@@ -137,6 +160,14 @@ struct ProfileRoute: View {
                 CreateNewPinView(state: state, unlockScreen: $state.isLockScreen)
             }
             
+            Route(path: "/profile/security/pin_screen/change_pin") {
+                ChangePinScreenAppView(state: state, unlockScreen: $state.isLockScreen)
+            }
+        }
+    }
+    
+    var shipping_view : some View {
+        Group {
             Route(path: "/profile/shipping") {
                 ShippingDetailView(state: state)
                     .if(state.showModalSetDefaultAddress, transform: { view in
@@ -149,10 +180,6 @@ struct ProfileRoute: View {
             }
             Route(path: "/profile/shipping/edit_address"){
                 EditAddressView(state: state)
-            }
-            
-            Route(path: "/profile/settings") {
-                SettingsView(state: state)
             }
         }
     }
