@@ -24,8 +24,8 @@ struct PinScreenAppView: View {
                 NavigationBar(backgroundColor: .backgroundColorSchemeApp, color: .foregroundColorSchemeApp, showTitle: false)
                 ZStack{
                     
-                    VStack(spacing: UIScreen.screenHeight / 11){
-                        VStack(spacing: UIScreen.screenHeight / 11){
+                    VStack(spacing: UIScreen.screenHeight / 11) {
+                        VStack(spacing: UIScreen.screenHeight / 11) {
                             Text("Enter Your Pin")
                                 .font(Font.custom("CircularStd-Bold", size: 18))
                             
@@ -35,7 +35,7 @@ struct PinScreenAppView: View {
                                 }
                             }
                             VStack{
-                                if state.wrongPinScreen == true{
+                                if state.wrongPinScreen == true {
                                     Text("Wrong Pin")
                                         .font(Font.custom("CircularStd-Book", size: 14))
                                         .foregroundColor(.red)
@@ -52,21 +52,7 @@ struct PinScreenAppView: View {
                                                         self.remaining = 1.0
                                                         stopTimer()
                                                     }
-                                                    
-                                                    
-                                                    if appearWrong == true {
-                                                        print(true)
-                                                    } else {
-                                                        print(false)
-                                                    }
-                                                    
-                                                    if state.wrongPinScreen == true {
-                                                        print("WRONG PRINT SCREEN: \(true)")
-                                                    } else {
-                                                        print("WRONG PRINT SCREEN: \(false)")
-                                                    }
                                                 }
-                                               
                                         })
                                         
                                         
@@ -75,39 +61,15 @@ struct PinScreenAppView: View {
                                     Text("...")
                                         .font(Font.custom("CircularStd-Book", size: 14))
                                         .foregroundColor(.backgroundColorSchemeApp)
-                                    
                                 }
                             }
                            
                         }
-                        .onAppear {
-                            if appearWrong == true {
-                                print(true)
-                            } else {
-                                print(false)
-                            }
-                            
-                            if state.wrongPinScreen == true {
-                                print("WRONG PRINT SCREEN: \(true)")
-                            } else {
-                                print("WRONG PRINT SCREEN: \(false)")
-                            }
-                            
-                            if state.isPinAvailable != nil {
-                                print("check bool:")
-                                print(true)
-                            }
-                            
-//                            print("Check", state.isPinAvailable)
-                        }
-                        
                         
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 40){
                             
-                            
                             ForEach(1...9, id:\.self){ index in
                                
-                                
                                 KeyPadPinScreenOnBoard(value: "\(index)", pin: $state.pinScreenOnBoard, key_pin_storage: $state.key_pin_storage, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $appearWrong, state: state, closeScreen: $locked)
                             }
                             
@@ -117,23 +79,16 @@ struct PinScreenAppView: View {
                         }
                         .onAppear{
                             self.state.key_pin_storage = state.getPin()
-                          
+                            print("CHECK", self.state.key_pin_storage)
+                            if state.isPinAvailable != "" {
+                                print("check bool:",true)
+                            } else {
+                                print("check bool:",false)
+                            }
                         }
                         
                     }
                 }
-    //            .onReceive(timer, perform: { _ in
-    //
-    //                print("\(remaining)")
-    //
-    //                self.remaining -= 1.0
-    //
-    //                if self.remaining <= 0 && self.remaining >= -1.0{
-    //                    print("Halo")
-    //                } else if self.remaining == -2.0 {
-    //                    stopTimer()
-    //                }
-    //            })
             }
             .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight, alignment: .top)
             .background(Color.backgroundColorSchemeApp)
@@ -170,9 +125,6 @@ struct CirclePinScreenOnBoard: View {
                 }
                 
             }
-        .onAppear{
-            print("Check", pinScreen.count, "index:", index)
-        }
         .transition(.scale(scale: 0, anchor: .center))
          
     }
@@ -223,8 +175,9 @@ struct KeyPadPinScreenOnBoard: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         withAnimation {
                             if pin.count == 4 {
-//                                if state.isPinAvailable == nil {
+                                print(key_pin_storage)
                                     if pin == key_pin_storage {
+                                       
                                         unlockPinScreen.toggle()
                                         closeScreen = false
                                     } else {
@@ -232,9 +185,6 @@ struct KeyPadPinScreenOnBoard: View {
                                         timingBool = true
                                         pin.removeAll()
                                     }
-//                                } else {
-//                                    pin.removeAll()
-//                                }
                             }
                         }
                     }

@@ -10,15 +10,23 @@ import SwiftUI
 struct ChangePinScreenAppView: View {
     
     @StateObject var state: State
-//    @AppStorage("pin_screen") var key_pin_storage = "2222"
-    
     @Binding var unlockScreen: Bool
  
     var timer = Timer.publish(every: 1.0, on: .current, in: .default).autoconnect()
     
     var body: some View {
-        
+        ZStack{
             mainContent
+            
+            SuccessChangePinView(isVerified: $state.successChangePin)
+        }
+        .onAppear{
+            state.successChangePin = false
+            state.isForwardVerifiedNewPin = false
+            state.isForwardToCreateNewPin = false
+            state.newPinScreenApp = ""
+            state.verifiedNewPinScreenApp = ""
+        }
     
     }
     
@@ -26,20 +34,18 @@ struct ChangePinScreenAppView: View {
         VStack(spacing:0){
             NavigationBar(backgroundColor: .backgroundColorSchemeApp, color: .foregroundColorSchemeApp, hiddenLeftBarButton:  state.isForwardToCreateNewPin, pathRouterLeftBar: "/profile/security/pin_screen", showTitle: false)
             ZStack{
-                VStack(spacing: UIScreen.screenHeight / 11){
-                    VStack(spacing: UIScreen.screenHeight / 11){
+                VStack(spacing: UIScreen.screenHeight / 11) {
+                    VStack(spacing: UIScreen.screenHeight / 11) {
                         
                         if state.isForwardToCreateNewPin == false {
                             Text("Enter Your Pin")
                                 .font(Font.custom("CircularStd-Bold", size: 18))
                             
                         } else {
-                            Text(state.isForwardVerifiedNewPin ? "Enter New Pin Again \nTo Verified" : "Enter New Pin")
+                            Text(state.isForwardVerifiedNewPin ? "Enter New Pin Again To Verified" : "Enter New Pin")
                                 .font(Font.custom("CircularStd-Bold", size: 18))
                                 .foregroundColor(.heroColor)
                         }
-                        
-                        
                         HStack(spacing: 20){
                             ForEach(0..<4, id:\.self){ index in
                                 CirclePinScreen_ChangePinScreenAppView(index: index, pinScreen: state.isForwardToCreateNewPin ? state.isForwardVerifiedNewPin ? $state.verifiedNewPinScreenApp :  $state.newPinScreenApp : $state.pinScreen)
@@ -47,7 +53,7 @@ struct ChangePinScreenAppView: View {
                         }
                         
                         VStack{
-                            if state.wrongPinScreen == true{
+                            if state.wrongPinScreen == true {
                                 Text("Wrong Pin")
                                     .font(Font.custom("CircularStd-Book", size: 14))
                                     .foregroundColor(.red)
@@ -55,36 +61,15 @@ struct ChangePinScreenAppView: View {
                                     .opacity(self.state.wrongPinScreen ? 1.0 : 0.0)
                                     .if(self.state.wrongPinScreen == true, transform: { view in
                                         view
-                                           
                                             .onReceive(timer) { _ in
-                                    
                                                 print("\(state.remaining)")
                                                 self.state.remaining -= 1.0
-                                                
                                                 if self.state.remaining == -1.0 {
                                                     self.state.remaining = 1.0
                                                     stopTimer()
                                                 }
-                                                
-                                                
-                                                if state.appearWrong == true {
-                                                    print(true)
-                                                } else {
-                                                    print(false)
-                                                }
-                                                
-                                                if state.wrongPinScreen == true {
-                                                    print("WRONG PRINT SCREEN: \(true)")
-                                                } else {
-                                                    print("WRONG PRINT SCREEN: \(false)")
-                                                }
-                                                
-                                                
                                             }
-                                           
                                     })
-                                    
-                                    
                                 
                             } else {
                                 Text("...")
@@ -93,31 +78,7 @@ struct ChangePinScreenAppView: View {
                                 
                             }
                         }
-                       
                     }
-                    .onAppear {
-                        let __data = state.getPin()
-
-                        print("\(__data)")
-                        print("TESTTTTTTT",state.newPinScreenApp)
-                        
-                        state.key_pin_storage = __data
-                        
-                        if state.isForwardToCreateNewPin == true {
-                            print(true)
-                        } else {
-                            print(false)
-                        }
-                        
-                        if state.wrongPinScreen == true {
-                            print("WRONG PRINT SCREEN: \(true)")
-                        } else {
-                            print("WRONG PRINT SCREEN: \(false)")
-                        }
-                        
-                        print("NEW PIN", state.newPinScreenApp)
-                    }
-                    
                     
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 40){
                         ForEach(1...9, id:\.self){ index in
@@ -128,7 +89,10 @@ struct ChangePinScreenAppView: View {
                         
                         KeyPadPinScreen_ChangePinScreenAppView(value: "0", pin: $state.pinScreen, key_pin_storage: $state.isPinAvailable, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $state.appearWrong, newPin: $state.newPinScreenApp, verifiedNewPin: $state.verifiedNewPinScreenApp, state: state)
                     }
-                    
+                }
+                .onAppear {
+                    let __data = state.getPin()
+                    state.key_pin_storage = __data
                 }
             }
         }
@@ -138,7 +102,7 @@ struct ChangePinScreenAppView: View {
     }
     
     var success_popup: some View {
-        SuccessChangePinView(isVerified: $state.successChangePin, isDarkScheme: $state.bool)
+        SuccessChangePinView(isVerified: $state.successChangePin)
     }
     
     func stopTimer(){
@@ -166,13 +130,8 @@ struct CirclePinScreen_ChangePinScreenAppView: View {
                     Circle()
                         .fill(Color.red)
                         .frame(width: 14, height: 14)
-                        
                 }
-                
             }
-        .onAppear{
-            print("Check", pinScreen.count, "index:", index)
-        }
         .transition(.scale(scale: 0, anchor: .center))
          
     }
@@ -267,14 +226,12 @@ struct KeyPadPinScreen_ChangePinScreenAppView: View {
                         withAnimation {
                             
                             if newPin.count == 4 {
-                                    print("NEW PIN", newPin)
                                     state.isForwardVerifiedNewPin = true
                                     state.newPinScreenApp = self.newPin
                                     
                                     if state.isForwardVerifiedNewPin == true {
                                         
                                         if  state.newPinScreenApp == newPin {
-//                                            newPin.removeAll()
                                             wrongPinScreen = false
                                             timingBool = false
                                             print("state.newPinScreenApp == newPin:",true)
@@ -308,7 +265,9 @@ struct KeyPadPinScreen_ChangePinScreenAppView: View {
                                 if verifiedNewPin == state.newPinScreenApp {
                                     print("STATE NEW PIN", state.newPinScreenApp)
                                     print("VERIFIED NEW PIN", verifiedNewPin)
+                                    verifiedNewPin = state.verifiedNewPinScreenApp
                                     state.successChangePin = true
+                                    state.setPin(for: state.verifiedNewPinScreenApp)
                                     
                                 } else {
                                     print("STATE NEW PIN", state.newPinScreenApp)

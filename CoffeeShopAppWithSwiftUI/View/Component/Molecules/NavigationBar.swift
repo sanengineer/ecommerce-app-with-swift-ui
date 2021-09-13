@@ -17,6 +17,7 @@ struct NavigationBar: View {
     var color: Color = .heroColorText
     var titleSize: CGFloat = 20
     var iconName: String = "bell"
+    var iconLeftName: String = "chevron.left"
     var hiddenLeftBarButton: Bool = true
     var hiddenBorderBottom: Bool = true
     var hiddenRightBarButton: Bool = true
@@ -31,7 +32,7 @@ struct NavigationBar: View {
                 Group{
                     if (hiddenLeftBarButton == false) {
                         NavLink(to: pathRouterLeftBar){
-                            Image(systemName: "chevron.left")
+                            Image(systemName: iconLeftName)
                                 .font(Font.system(size: 20, weight: .medium, design: .default))
                            
                                 .foregroundColor(color)

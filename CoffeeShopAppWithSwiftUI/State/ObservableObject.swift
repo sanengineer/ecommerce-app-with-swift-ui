@@ -106,8 +106,8 @@ class State: ObservableObject {
     
     @Published var isPinAvailable: String? = UserDefaults.standard.value(forKey: "PinScreenApp") as? String
     
-    func setPin() {
-        defaults.set(pinScreen, forKey: _forKey)
+    func setPin(for pin:String) {
+        defaults.set(pin, forKey: _forKey)
     }
     
     func getPin() -> String {

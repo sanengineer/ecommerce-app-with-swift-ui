@@ -58,7 +58,7 @@ struct RootView: View {
             
             ModalChangeProfilePictView(isShowing: $state.showModalEditProfilePict, state: state)
             
-            SuccessChangePinView(isVerified: $state.successChangePin, isDarkScheme: $state.bool)
+            
         }
        
     }

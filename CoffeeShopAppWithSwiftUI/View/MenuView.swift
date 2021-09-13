@@ -17,10 +17,10 @@ struct MenuView: View {
         VStack(spacing: 0){
            
             NavigationBar(navTitle:"Menu", backgroundColor: Color.heroColor)
-            NavLink(to: self.state.profile_detail_path) {
-                Text("\(self.state.profile_detail_path)")
-            }
-          
+//            NavLink(to: self.state.profile_detail_path) {
+//                Text("\(self.state.profile_detail_path)")
+//            }
+//
             VStack{
                 ScrollView(showsIndicators: false){
                 }
@@ -29,6 +29,14 @@ struct MenuView: View {
             }
            
         }
+        .ignoresSafeArea(.all)
        
+    }
+}
+
+
+struct MenuView_Previews: PreviewProvider {
+    static var previews: some View {
+        MenuView(state: State())
     }
 }

@@ -11,52 +11,41 @@ import SwiftUIRouter
 struct SuccessChangePinView: View {
     
     @Binding var isVerified: Bool
-    @Binding var isDarkScheme: Bool
+    var isDarkScheme = true
     
     var body: some View {
-        ZStack(alignment: .center){
-            
-           
-            
-            if isVerified {
-                Color.backgroundColorSchemeApp
-                VStack(spacing: 0) {
-                    VStack(alignment: .leading,spacing:0){
-//                        NavLink(to: "/profile/security") {
-//                            Image(systemName: "xmark")
-//                                .font(Font.system(size: 24, weight: .medium))
-//                        }
-                       
-                        Button(action: {
-                            isVerified.toggle()
-                        }, label: {
-                            Image(systemName: "xmark")
-                                .font(Font.system(size: 24, weight: .medium))
-                        })
-                    }
-                    
-                    VStack(alignment: .center,spacing:30){
-                        Text(isDarkScheme ? "👏🏻" : "👏🏿")
-                            .font(Font.system(size: UIScreen.screenHeight / 4.5))
-                        Text("Success Change New Pin")
-                            .font(Font.custom("CircularStd-Bold", size: 24))
-                    }
-                }
-                .background(Color.red)
-                .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+        if isVerified {
+            VStack(spacing: 0){
+                
+                NavigationBar(backgroundColor: .backgroundColorSchemeApp, color: .foregroundColorSchemeApp, iconLeftName: "xmark", hiddenLeftBarButton: false, pathRouterLeftBar: "/profile/security", showTitle: false)
+                
+                mainContent
+                    .offset(x: 0, y: -80)
                
-                .transition(AnyTransition.scale(scale: 0, anchor: .center))
-                .ignoresSafeArea(.all)
             }
+            .animation(.easeInOut(duration: 0.2))
+            .background(Color.backgroundColorSchemeApp)
+            .ignoresSafeArea(.all)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity , alignment: .center)
-        .animation(.easeInOut(duration: 0.2))
-        .ignoresSafeArea(.all)
+    }
+    
+    var mainContent: some View {
+        VStack(spacing: 0) {
+            Spacer()
+            VStack(alignment: .center,spacing:30){
+                Text(isDarkScheme ? "👏🏻" : "👏🏿")
+                    .font(Font.system(size: UIScreen.screenHeight / 5))
+                Text("Success Change New Pin")
+                    .font(Font.custom("CircularStd-Bold", size: 24))
+            }
+            Spacer()
+        }
+        .transition(AnyTransition.scale(scale: 0, anchor: .center))
     }
 }
 
 struct SuccessChangePinView_Previews: PreviewProvider {
     static var previews: some View {
-        SuccessChangePinView(isVerified: .constant(true), isDarkScheme: .constant(true))
+        SuccessChangePinView(isVerified: .constant(true))
     }
 }

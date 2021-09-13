@@ -22,6 +22,7 @@ struct SecurityView: View {
             .padding(.horizontal, 20)
             
             
+            
             Spacer()
         }
         .background(Color.backgroundColorSchemeApp)

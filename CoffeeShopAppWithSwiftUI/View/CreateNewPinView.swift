@@ -91,9 +91,6 @@ struct CreateNewPinView: View {
                        
                     }
                     .onAppear {
-                        let __data = state.getPin()
-
-                        print("\(__data)")
                         
                         if state.appearWrong == true {
                             print(true)
@@ -118,8 +115,8 @@ struct CreateNewPinView: View {
                         
                         KeyPadPinScreen(value: "0", pin: $state.pinScreen, key_pin_storage: $key_pin_storage, unlockPinScreen: $state.isLockScreen, wrongPinScreen: $state.wrongPinScreen, timingBool: $state.appearWrong, state: state)
                     }
-                    
                 }
+                
             }
 //            .onReceive(timer, perform: { _ in
 //
