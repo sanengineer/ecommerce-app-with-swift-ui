@@ -91,6 +91,17 @@ class State: ObservableObject {
     var _forKey = "PinScreenApp"
     
     var _forKeyActivatePinScreenApp = "ActivatePinScreenApp"
+    var _forKeyThemeScheme = "ThemeScheme"
+    
+    func setThemeScheme(){
+        defaults.set(bool, forKey: _forKeyThemeScheme)
+    }
+    
+    func getThemeScheme() -> Bool {
+        let data = defaults.bool(forKey: _forKeyThemeScheme)
+        
+        return data
+    }
     
     func setActivatePin() {
         defaults.set(activatePinScreen, forKey: _forKeyActivatePinScreenApp)

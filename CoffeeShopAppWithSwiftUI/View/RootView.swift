@@ -41,6 +41,10 @@ struct RootView: View {
                     }
                    
                 }
+                .onAppear{
+                    let valueBool = state.getThemeScheme()
+                    state.bool = valueBool
+                }
                 .preferredColorScheme(self.state.bool ? .dark : .light)
                 .ignoresSafeArea(.all)
             }

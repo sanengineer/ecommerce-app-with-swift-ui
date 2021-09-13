@@ -31,6 +31,10 @@ struct SettingsView: View {
                                     .font(Font.custom("CircularStd-Book", size: 16))
                             }
                         }
+                        .onChange(of: state.bool) { _ in
+                            state.setThemeScheme()
+                        }
+
                     }
                     .padding(.top, 40)
                 

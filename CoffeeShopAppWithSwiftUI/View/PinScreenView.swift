@@ -38,9 +38,7 @@ struct PinScreenView: View {
                         .onChange(of: state.activatePinScreen) { _ in
                             state.setActivatePin()
                         }
-                   
                     }
-                
             }
             .padding(.top, 40)
             .padding(.horizontal, 20)
