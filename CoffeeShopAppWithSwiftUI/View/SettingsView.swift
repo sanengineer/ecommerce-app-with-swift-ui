@@ -26,7 +26,7 @@ struct SettingsView: View {
                         Toggle(isOn: $state.bool) {
                             HStack(spacing:8){
                                 Image(systemName: self.state.bool ?  "sun.min" : "moon" )
-                                    .font(Font.system(size: 20, weight: .medium, design: .default))
+                                    .font(Font.system(size: 16, weight: .medium, design: .default))
                                 Text("\(self.state.bool ? "Light" : "Dark")")
                                     .font(Font.custom("CircularStd-Book", size: 16))
                             }
@@ -34,21 +34,12 @@ struct SettingsView: View {
                         .onChange(of: state.bool) { _ in
                             state.setThemeScheme()
                         }
-
                     }
                     .padding(.top, 40)
-                
-                
-                
-                
-              
             }
             .padding(.horizontal, 20)
            
-           
             Spacer()
-         
-            
         }
         .background(Color.backgroundColorSchemeApp)
         .ignoresSafeArea(.all)

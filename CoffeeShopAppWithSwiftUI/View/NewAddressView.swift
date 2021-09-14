@@ -22,7 +22,6 @@ struct NewAddressView: View {
                 VStack(alignment: .leading, spacing: 50){
                     
                     Text("New Address")
-//                        .font(Font.system(size: 20, weight: .bold, design: .default))
                         .font(.custom("CircularStd-Bold", size: textSize20))
                         .foregroundColor(.heroColor)
                         .padding(.top, 30)

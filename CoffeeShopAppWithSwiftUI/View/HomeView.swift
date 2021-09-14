@@ -36,19 +36,19 @@ struct HomeView: View {
                 backgroundManipulate
                 
                 VStack(spacing:0){
-                    NavigationBar(navTitle:"Coffee Shop", backgroundColor: .heroColor, colorBorderNav: .heroColor, hiddenBorderBottom: false)
+                    NavigationBar(navTitle:"Coffee Shop", backgroundColor: .heroColor, colorBorderNav: .heroColor, hiddenBorderBottom: false, hiddenRightBarButton: false, useImageIconOnRightNav: false, iconTextRightNav: "🔔")
                 
                     ScrollView(showsIndicators: false){
                         VStack(spacing:0){
                             // MARK: - First Section
                            firstSection
-                      
+                            
                             ZStack{
                                 VStack(spacing:0){}
                                     .frame(minWidth: 0, idealWidth: UIScreen.screenWidth, maxWidth: .infinity, minHeight: 0, idealHeight: UIScreen.screenHeight, maxHeight: .infinity, alignment: .center)
                                     .background(Color.heroColorBackground)
                                     .offset(x: 0, y: 100)
-                                VStack(spacing:32){
+                                VStack(spacing:20){
                                    
                                     // MARK: - Second Section
                                 secondSection
@@ -59,20 +59,11 @@ struct HomeView: View {
                                 }
                                 .padding()
                             }
-                               
                         }
                     }
                 }
-                
-               
             }
-            
-           
         }
-       
-       
-               
-
     }
     
     var backgroundManipulate: some View {
@@ -162,12 +153,12 @@ struct HomeView: View {
     }
     
     var secondSection: some View {
-        VStack(content: {
+        VStack(spacing:0,content: {
             VStack(alignment: .center, content: {
                 ImageSlideView().cornerRadius(20.0)
             })
-            .frame(minWidth: 0,maxWidth: .infinity, minHeight: UIScreen.screenHeight / 6, maxHeight: .infinity, alignment: .center)
-            .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.heroColorBackground, lineWidth: 10))
+            .frame(minWidth: 0,maxWidth: .infinity, minHeight: UIScreen.screenHeight / 4.5, maxHeight: .infinity, alignment: .center)
+            .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.heroColorBackground, lineWidth: 8))
         })
     }
     
@@ -182,7 +173,6 @@ struct HomeView: View {
                             HStack{
                                 Text(categoryName[data].icon)
                                 Text(categoryName[data].name)
-//                                                                .font(Font.system(size: 16, weight: .medium, design: .default))
                                     .font(.custom("CircularStd-Medium", size: 14))
                                     .foregroundColor(.foregroundColorSchemeApp)
                                 }
@@ -202,8 +192,8 @@ struct HomeView: View {
     }
     
     var fourthSection: some View {
-        VStack(){
-            LazyVGrid(columns:layout, spacing: 15){
+        VStack(spacing:0){
+            LazyVGrid(columns:layout, spacing: 35){
                 CardRoundedImageTextView()
                 CardRoundedImageTextView()
                 CardRoundedImageTextView()
@@ -212,12 +202,12 @@ struct HomeView: View {
                 CardRoundedImageTextView()
             }
         }
-        .offset(x: 0, y: -10)
+        .offset(x: 0, y: 0)
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(state: State())
+        HomeView(state: State())
     }
 }

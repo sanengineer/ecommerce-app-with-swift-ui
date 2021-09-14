@@ -21,12 +21,16 @@ struct MenuView: View {
 //                Text("\(self.state.profile_detail_path)")
 //            }
 //
-            VStack{
-                ScrollView(showsIndicators: false){
-                }
+//            VStack(spacing:0){
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing:0){
+                        Text("Halo")
+                    }.ignoresSafeArea(.all)
                 
-                .background(Color.red)
-            }
+//                }
+//
+                
+            }.background(Color.red)
            
         }
         .ignoresSafeArea(.all)

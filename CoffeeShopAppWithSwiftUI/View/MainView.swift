@@ -35,7 +35,7 @@ struct MainView: View {
                         }
                     }
 
-                    Spacer()
+                    Spacer(minLength: 0)
                     
                     TabBarView(state: state)
                 }
@@ -43,9 +43,6 @@ struct MainView: View {
                     view
                         .blur(radius: 2)
                 })
-               
-               
-                
             }
         }
         .ignoresSafeArea(.all)

@@ -24,6 +24,8 @@ struct NavigationBar: View {
     var pathRouterLeftBar: String = "home"
     var pathRouterRightBar: String = "home"
     var showTitle: Bool = true
+    var useImageIconOnRightNav: Bool = true
+    var iconTextRightNav: String = "🔔"
     
     var body: some View {
         VStack(alignment: .leading){
@@ -55,8 +57,15 @@ struct NavigationBar: View {
                     Spacer()
                     if hiddenRightBarButton == false {
                         NavLink(to: pathRouterRightBar) {
-                            Image(systemName: iconName)  .font(Font.system(size: 20, weight: .medium, design: .default))
-                                .foregroundColor(color)
+                            if useImageIconOnRightNav == true {
+                                Image(systemName: iconName)
+                                    .font(Font.system(size: 20, weight: .medium, design: .default))
+                                    .foregroundColor(color)
+                            } else {
+                                Text(iconTextRightNav)
+                                    .font(Font.system(size: 20, weight: .medium, design: .default))
+                                    .foregroundColor(color)
+                            }
                         }
                         
                     } else {

@@ -30,7 +30,6 @@ struct TabBarView: View {
                                 .frame(width: 20, height: 20)
 
                             Text(self.state.tabCollection[int].tabName)
-//                                .font(Font.system(size: textSize14, weight: self.state.selectionTab == int ? .heavy : .regular, design: .default))
                                 .font(.custom(self.state.selectionTab == int ? "CircularStd-Bold" : "CircularStd-Book" , size: textSize14))
                                 .foregroundColor(.foregroundColorSchemeApp)
                         }

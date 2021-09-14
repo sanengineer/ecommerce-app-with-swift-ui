@@ -9,8 +9,8 @@ import SwiftUI
 
 struct CardRoundedImageTextView: View {
     var body: some View {
-        VStack(alignment: .center,spacing:10){
-            VStack{
+        VStack(alignment: .center,spacing:0){
+            VStack(spacing:0){
                 Image("1")
                     .resizable()
                     .scaledToFill()
@@ -18,19 +18,19 @@ struct CardRoundedImageTextView: View {
             .frame(minWidth: 100, maxWidth: .infinity ,minHeight:90, maxHeight: 100)
             .background(Color.red)
                     
-            HStack(){
+            VStack(spacing:0){
                 VStack(alignment: .leading, spacing: 10){
-                Text("Double Shoot Espresso Special With Palm Sugar")
-//                    .font(Font.system(size: 14, weight: .bold, design: .default))
+                Text("Coffee Double Shot Double Shot Double Shot - 250ml Coffee Coffee Coffee")
                     .font(.custom("CircularStd-Book", size: 14))
-                    .lineLimit(4)
+                    .lineLimit(8)
+                    .frame(minHeight:74)
                 Text("Rp 20.000")
-//                    .font(Font.system(size: 14, weight: .bold, design: .default))
                     .font(.custom("CircularStd-Medium", size: 14))
                 }
                 .layoutPriority(100)
-                Spacer()
-            }.padding()
+                Spacer(minLength: 0)
+            }
+            .padding()
         }
         .cornerRadius(10, antialiased: true)
         .overlay(

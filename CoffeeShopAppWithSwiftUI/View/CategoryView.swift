@@ -19,15 +19,6 @@ struct CategoryView: View {
         VStack(spacing:0){
             NavigationBar(navTitle:"☕️ Coffee",backgroundColor: .backgroundColorSchemeApp, color: .foregroundColorSchemeApp, hiddenLeftBarButton: false, hiddenBorderBottom: false, pathRouterLeftBar: "/home")
             
-//            VStack(){
-//                Button {
-//                    self.presentationMode.wrappedValue.dismiss()
-//                } label: {
-//                    Text("Halo")
-//                }
-//
-//            }
-            
             ScrollView(showsIndicators: false){
                 Spacer(minLength: 20)
                 LazyVGrid(columns:layout, spacing: 30){

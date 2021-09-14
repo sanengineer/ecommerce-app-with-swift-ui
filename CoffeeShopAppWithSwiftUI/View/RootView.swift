@@ -62,7 +62,6 @@ struct RootView: View {
             
             ModalChangeProfilePictView(isShowing: $state.showModalEditProfilePict, state: state)
             
-            
         }
        
     }

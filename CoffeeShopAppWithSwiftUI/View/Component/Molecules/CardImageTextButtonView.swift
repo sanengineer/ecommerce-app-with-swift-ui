@@ -27,11 +27,9 @@ struct CardImageTextButtonView: View {
                 HStack(){
                     VStack(alignment: .leading, spacing: 10){
                         Text("Coffee Double Shot Double Shot Double Shot - 250ml Coffee Double Shot Double Shot Double Shot - 250ml")
-        //                    .font(Font.system(size: 14, weight: .bold, design: .default))
                             .font(.custom("CircularStd-Book", size: 14))
                             .lineLimit(4)
                         Text("Rp 20.000")
-        //                    .font(Font.system(size: 14, weight: .bold, design: .default))
                             .font(.custom("CircularStd-Medium", size: 14))
                         }
                     .layoutPriority(100)
@@ -46,7 +44,6 @@ struct CardImageTextButtonView: View {
             )
             }
             .foregroundColor(.foregroundColorSchemeApp)
-            
           
             ButtonView(backgroundColor: .backgroundColorSchemeApp, color: .foregroundColorSchemeApp, label: "Add", labelSize: 14,height: 30, isFixHeight: true,isOutlineStyle: true, cornerRadius: 10, borderWidth: 1, borderColor: .borderColorSchemeApp)
           

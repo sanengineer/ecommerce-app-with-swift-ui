@@ -32,7 +32,6 @@ struct PinScreenView: View {
                         }
                         .onAppear{
                             let valueBool = state.getActivatePin()
-                            print(valueBool)
                             state.activatePinScreen = valueBool
                         }
                         .onChange(of: state.activatePinScreen) { _ in

@@ -13,9 +13,7 @@ import SwiftUIRouter
 struct ProfileView: View {
     
     @StateObject var state: State
-  
     var textSize16: CGFloat = 16
-   
     
     var body: some View {
             VStack(spacing: 0){
@@ -55,7 +53,6 @@ struct ProfileView: View {
                                     print("Button Logout")
                                 }, label: {
                                     Text("Logout")
-//                                        .font(Font.system(size: textSize16, weight: .bold, design: .default))
                                         .font(.custom("CircularStd-Bold", size: textSize16))
                                         .foregroundColor(.red)
                                 })
@@ -66,8 +63,8 @@ struct ProfileView: View {
                 }
 
             }
-        
-       
+            .background(Color.backgroundColorSchemeApp)
+            .ignoresSafeArea(.all)
     }
     
     func toggleNavigate(){
